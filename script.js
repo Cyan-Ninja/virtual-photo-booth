@@ -10,5 +10,9 @@ function stepper() {
 	}
 }
 function stepOne() { // Get The Camera
-
+	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
+		console.log(navigator.mediaDevices.getUserMedia({video: true}));
+	} else {
+		console.error("No Media Devices!");
+	}
 }
