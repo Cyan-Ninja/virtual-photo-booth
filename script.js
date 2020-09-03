@@ -9,9 +9,9 @@ function stepper() {
 		console.error("Incorrect Step: " + step);
 	}
 }
-function stepOne() { // Get The Camera & Display In Video
+async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		const videoStream = navigator.mediaDevices.getUserMedia({video: true});
+		const videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
 		const video = document.querySelector("#video");
 		video.srcObject = videoStream;
