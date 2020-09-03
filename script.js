@@ -5,7 +5,7 @@ function stepper() {
 		case 1:
 			stepOne();
 			break;
-		case 1:
+		case 2:
 			stepTwo();
 			break;
 		default:
@@ -23,5 +23,9 @@ async function stepOne() { // Get The Camera & Display In Video
 	}
 }
 function stepTwo() { // Snap Photo
-	canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.width, 0, 0, canvas.width, canvas.width);
+	if (video.videoWidth > video.videoHeight) {
+		canvas.getContext("2d").drawImage(video, 0, 0, video.videoHeight + video.videoHeight / 2, video.videoHeight, 0, 0, canvas.width, canvas.height);
+	} else {
+		canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoWidth + video.videoWidth / 2, 0, 0, canvas.width, canvas.height);
+	}
 }
