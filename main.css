@@ -10,3 +10,16 @@
 	font-family: Arial, sans-serif;
 	text-align: center;
 }
+
+#videoContainer {
+	display:block;
+	overflow: hidden;
+}
+
+#video {
+	width: 50vw;
+}
+
+#canvas {
+	width: 50vw;
+}
