@@ -5,8 +5,8 @@ function stepper() {
 		case 1:
 			stepOne();
 			break;
-		case 2:
-			stepTwo();
+		case 3:
+			stepThree();
 			break;
 		default:
 		console.error("Incorrect Step: " + step);
@@ -19,20 +19,35 @@ async function stepOne() { // Get The Camera & Display In Video
 		console.log(videoStream);
 		video.srcObject = videoStream;
 		//video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Just For Development (Desktop Doesn't Have Webcam)
-		document.getElementById("videoContainer").style.display = "block";
 	} else {
 		console.error("No Media Device Navigator!");
 	}
+	stepTwo();
+	step++;
 }
-function stepTwo() { // Snap Photo
+function stepTwo() {
+	document.getElementById("startStepper").style.display = "none";
+	document.getElementById("pictureSection").style.display = "none";
+	document.getElementById("videoSection").style.display = "block";
+}
+function retakePicture() { // Go Back To Step Two
+	step = 2;
+	stepTwo();
+}
+function stepThree() { // Snap Photo
 	if (video.videoWidth > video.videoHeight) {
 		canvas.getContext("2d").drawImage(video, (video.videoWidth - video.videoHeight) / 2, 0, video.videoHeight, video.videoHeight, 0, 0, canvas.width, canvas.height);
 	} else {
 		canvas.getContext("2d").drawImage(video, 0, (video.videoHeight - video.videoWidth) / 2, video.videoWidth, video.videoWidth, 0, 0, canvas.width, canvas.height);
 	}
+	document.getElementById("videoSection").style.display = "none";
+	document.getElementById("pictureSection").style.display = "block";
 }
-function changeElement() {
+function stepFour() {
+
+}
+/*function changeElement() {
   var videoC = document.getElementById("videoContainer");
   videoC.style.width = video.videoHeight + "px";
   videoC.style.height = video.videoHeight + "px";
-}
+}*/
