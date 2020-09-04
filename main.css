@@ -12,8 +12,7 @@
 }
 
 #videoContainer {
-	display:block;
-	overflow: hidden;
+	display: none;
 }
 
 #video {

@@ -19,6 +19,7 @@ async function stepOne() { // Get The Camera & Display In Video
 		console.log(videoStream);
 		video.srcObject = videoStream;
 		//video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Just For Development (Desktop Doesn't Have Webcam)
+		document.getElementById("videoContainer").style.display = "block";
 	} else {
 		console.error("No Media Device Navigator!");
 	}
