@@ -15,10 +15,10 @@
 	display: none;
 }
 
-#video {
+video {
 	width: 50vw;
 }
 
-#canvas {
+canvas {
 	width: 50vw;
 }

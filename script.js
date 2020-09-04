@@ -1,16 +1,19 @@
-var step = 0, video = document.querySelector("video"), canvas = document.querySelector("canvas");
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0;
 function stepper() {
 	step++;
 	switch (step) {
 		case 1:
 			stepOne();
 			break;
+		// Case 2 Is The Retake Feature
 		case 3:
 			stepThree();
 			break;
+		case 4:
+			stepFour();
+			break;
 		default:
 		console.error("Incorrect Step: " + step);
-		stepTwo(); // TEMP: Just For Development
 	}
 }
 async function stepOne() { // Get The Camera & Display In Video
@@ -36,15 +39,29 @@ function retakePicture() { // Go Back To Step Two
 }
 function stepThree() { // Snap Photo
 	if (video.videoWidth > video.videoHeight) {
-		canvas.getContext("2d").drawImage(video, (video.videoWidth - video.videoHeight) / 2, 0, video.videoHeight, video.videoHeight, 0, 0, canvas.width, canvas.height);
+		pCanvas.getContext("2d").drawImage(video, (video.videoWidth - video.videoHeight) / 2, 0, video.videoHeight, video.videoHeight, 0, 0, pCanvas.width, pCanvas.height);
 	} else {
-		canvas.getContext("2d").drawImage(video, 0, (video.videoHeight - video.videoWidth) / 2, video.videoWidth, video.videoWidth, 0, 0, canvas.width, canvas.height);
+		pCanvas.getContext("2d").drawImage(video, 0, (video.videoHeight - video.videoWidth) / 2, video.videoWidth, video.videoWidth, 0, 0, pCanvas.width, pCanvas.height);
 	}
 	document.getElementById("videoSection").style.display = "none";
 	document.getElementById("pictureSection").style.display = "block";
 }
+function setFrame(newFrameNum) {
+	if (newFrameNum > 0 || newFrameNum === 0) {
+		frameNum = newFrameNum;
+		console.log("Frame Num: " + frameNum);
+	}
+	fCanvas.getContext("2d").drawImage(pCanvas, 0, 0);
+	if (frameNum > 0) {
+		var fImg = new Image();
+		fImg.src = "frames/" + frameNum + ".png";
+		fCanvas.getContext("2d").drawImage(fImg, 0, 0);
+	}
+}
 function stepFour() {
-
+	setFrame();
+	document.getElementById("pictureSection").style.display = "none";
+	document.getElementById("frameSection").style.display = "block";
 }
 /*function changeElement() {
   var videoC = document.getElementById("videoContainer");

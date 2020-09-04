@@ -13,9 +13,17 @@
 			<button type="button" name="button" id="stepper" onclick="stepper()">Snap</button><br>
 			<p>Note: Picture will be square when taken.</p><br>
 		</div>
-		<div id="pictureSection" class="sections">
-			<canvas id="canvas" width="720" height="720"></canvas><br>
-			<button type="button" name="button" id="stepper" onclick="retakePicture()">Retake</button><button type="button" name="button" id="stepper" onclick="stepper()">Continue</button>
+		<div id="pictureSection" class="section">
+			<canvas id="pictureCanvas" width="720" height="720"></canvas><br>
+			<button type="button" name="button" id="stepper" onclick="retakePicture()">Retake</button><button type="button" name="button" id="stepper" onclick="stepper()">Continue</button><br>
+		</div>
+		<div id="frameSection" class="section">
+			<canvas id="frameCanvas" width="720" height="720"></canvas><br>
+			<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
+			<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1</button>
+			<button type="button" name="button" class="frameButton" onclick="setFrame(2);">Frame 2</button>
+			<button type="button" name="button" class="frameButton" onclick="setFrame(3);">Frame 3...</button><br>
+			<button type="button" name="button" id="stepper" onclick="stepper()">Continue</button>
 		</div>
 <script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>
