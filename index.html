@@ -25,6 +25,20 @@
 			<button type="button" name="button" class="frameButton" onclick="setFrame(3);">Frame 3...</button><br>
 			<button type="button" name="button" id="stepper" onclick="stepper()">Continue</button>
 		</div>
-<script src="script.js" charset="utf-8" type="text/javascript"></script>
+		<div id="stickerSection" class="section">
+			<canvas id="stickerCanvas" width="720" height="720"></canvas><br>
+			<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);">Sticker 1</button>
+			<button type="button" name="button" class="stickerButton" onclick="chooseSticker(2);">Sticker 2</button>
+			<button type="button" name="button" class="stickerButton" onclick="chooseSticker(3);">Sticker 3...</button><br>
+			<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
+			<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
+			<button type="button" name="button" id="stepper" onclick="stepper()">Continue</button>
+		</div>
+		<div id="endSection" class="section">
+			<canvas id="endCanvas" width="720" height="720"></canvas><br>
+			<p>[Download .PNG] (Not yet available.)</p><br>
+			<button type="button" name="button" id="stepper" onclick="stepper()">Take Another</button>
+		</div>
+		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>
 </html>

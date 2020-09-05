@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0;
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), firstStickerRun = true, stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
 function stepper() {
 	step++;
 	switch (step) {
@@ -11,6 +11,15 @@ function stepper() {
 			break;
 		case 4:
 			stepFour();
+			break;
+		case 5:
+			stepFive();
+			break;
+		case 6:
+			stepSix();
+			break;
+		case 7:
+			stepSeven();
 			break;
 		default:
 		console.error("Incorrect Step: " + step);
@@ -46,7 +55,7 @@ function stepThree() { // Snap Photo
 	document.getElementById("videoSection").style.display = "none";
 	document.getElementById("pictureSection").style.display = "block";
 }
-function setFrame(newFrameNum) {
+function setFrame(newFrameNum) { // Choose & Draw Frame/Canvas
 	if (newFrameNum > 0 || newFrameNum === 0) {
 		frameNum = newFrameNum;
 		console.log("Frame Num: " + frameNum);
@@ -58,13 +67,116 @@ function setFrame(newFrameNum) {
 		fCanvas.getContext("2d").drawImage(fImg, 0, 0);
 	}
 }
-function stepFour() {
-	setFrame();
+function stepFour() { // Set Frame
+	setFrame(1);
 	document.getElementById("pictureSection").style.display = "none";
 	document.getElementById("frameSection").style.display = "block";
 }
+function chooseSticker(newNum) { // Set Sticker Image
+	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
+	sticker.i = newNum;
+	console.log(sticker);
+	if (!firstStickerRun) {
+		drawSticker(true);
+	} else {
+		firstStickerRun = false;
+		drawSticker(false);
+	}
+}
+function drawSticker(drawArc) {
+	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
+	var sImg = new Image();
+	sImg.src = "stickers/" + sticker.i + ".png";
+	for (var num = 0; num < stickers.length; num++) {
+		console.log(sticker[num]);
+		let sImgNew = new Image();
+		sImgNew.src = "stickers/" + stickers[num].i + ".png";
+		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y);
+	}
+	if (sticker.i > 0) {
+		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y);
+		if (drawArc) {
+			sCanvas.getContext("2d").beginPath();
+			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 22.5, 0, 2 * Math.PI);
+			sCanvas.getContext("2d").stroke();
+			sCanvas.getContext("2d").closePath();
+		}
+	}
+}
+function removeSticker() {
+	stickers.pop();
+	drawSticker(true);
+}
+function setSticker() {
+	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i});
+	sticker = {x: 90, y: 90, i: 1};
+	drawSticker(true);
+}
+function touchableStickers() {
+	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast;
+	sCanvas.addEventListener('touchstart', function(e){
+		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
+		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
+		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
+		xDist = touchStartX; // Reset
+		yDist = touchStartY; // Reset
+		xDistLast = touchStartX; // Reset
+		yDistLast = touchStartY; // Reset
+		e.preventDefault(); // Stop Gestured Scrolling
+		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
+	}, false)
+	sCanvas.addEventListener('touchmove', function(e){
+		touchobj = e.changedTouches[0] // Get First Finger Touchpoint
+		xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
+		yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
+		console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
+		// Change Current Sticker Coordinates Based On Relative Coordinate Distance
+		sticker.x += xDist - xDistLast;
+		sticker.y += yDist - yDistLast;
+		if (sticker.x < 0) { // Can't Go Left Off Canvas
+			sticker.x = 0;
+		} else if (sticker.x > sCanvas.width) { // Can't Go Right Off Canvas
+			sticker.x = sCanvas.width;
+		}
+		if (sticker.y < 0) { // Can't Go Up Off Canvas
+			sticker.y = 0;
+		} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
+			sticker.y = sCanvas.height;
+		}
+		drawSticker(true);
+		xDistLast = xDist;
+		yDistLast = yDist;
+	}, false)
+}
+function stepFive() { // Set Stickers
+	sCanvas.getContext("2d").lineWidth = 22.5;
+	chooseSticker(1);
+	drawSticker(false);
+	touchableStickers();
+	document.getElementById("frameSection").style.display = "none";
+	document.getElementById("stickerSection").style.display = "block";
+}
+function drawEnd() { // Draw The End Canvas
+	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
+	var eImg = new Image();
+	eImg.src = "stickers/" + sticker.i + ".png";
+	for (var eNum = 0; eNum < stickers.length; eNum++) {
+		console.log(sticker[eNum]);
+		let eImgNew = new Image();
+		eImgNew.src = "stickers/" + stickers[eNum].i + ".png";
+		eCanvas.getContext("2d").drawImage(eImgNew, stickers[eNum].x, stickers[eNum].y);
+	}
+}
+function stepSix() { // Ending Page
+	drawEnd();
+	document.getElementById("stickerSection").style.display = "none";
+	document.getElementById("endSection").style.display = "block";
+}
+function stepSeven() { // Reset To The Start To Take Another Picture
+	console.warn("RESETTING TO START");
+}
 /*function changeElement() {
-  var videoC = document.getElementById("videoContainer");
-  videoC.style.width = video.videoHeight + "px";
-  videoC.style.height = video.videoHeight + "px";
+	var videoC = document.getElementById("videoContainer");
+	videoC.style.width = video.videoHeight + "px";
+	videoC.style.height = video.videoHeight + "px";
 }*/
