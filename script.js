@@ -31,6 +31,7 @@ async function stepOne() { // Get The Camera & Display In Video
 		console.log(videoStream);
 		video.srcObject = videoStream;*/
 		video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Desktop != Webcam
+		video.crossOrigin = "anonymous"; // TEMP: Changes CORS
 	} else {
 		console.error("No Media Device Navigator!");
 	}
