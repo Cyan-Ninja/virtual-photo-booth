@@ -27,10 +27,10 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
-		video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Desktop != Webcam
+		video.srcObject = videoStream;
+		//video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Desktop != Webcam
 	} else {
 		console.error("No Media Device Navigator!");
 	}
