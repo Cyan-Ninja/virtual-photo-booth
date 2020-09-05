@@ -164,7 +164,7 @@ function drawEnd() { // Draw The End Canvas
 }
 function stepSix() { // Ending Page
 	drawEnd();
-	eCanvas = "anonymous";  // Enables CORS & Should Create A "Secure Operation"
+	eCanvas.crossOrigin = "anonymous";  // Enables CORS & Should Create A "Secure Operation"
 	var photoDownload = eCanvas.toDataURL('image/png');
 	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
