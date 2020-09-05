@@ -27,10 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
-		video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Desktop != Webcam
+		video.srcObject = videoStream;
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -164,7 +163,6 @@ function drawEnd() { // Draw The End Canvas
 }
 function stepSix() { // Ending Page
 	drawEnd();
-	eCanvas.crossOrigin = "anonymous";  // Enables CORS & Should Create A "Secure Operation"
 	var photoDownload = eCanvas.toDataURL('image/png');
 	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
