@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), firstStickerRun = true, stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
 function stepper() {
 	step++;
 	switch (step) {
@@ -27,10 +27,10 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
-		//video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Just For Development (Desktop Doesn't Have Webcam)
+		video.srcObject = videoStream;*/
+		video.src = "https://www.w3schools.com/html/mov_bbb.mp4"; // TEMP: Desktop != Webcam
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -76,12 +76,7 @@ function chooseSticker(newNum) { // Set Sticker Image
 	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
 	sticker.i = newNum;
 	console.log(sticker);
-	if (!firstStickerRun) {
-		drawSticker(true);
-	} else {
-		firstStickerRun = false;
-		drawSticker(false);
-	}
+	drawSticker(true);
 }
 function drawSticker(drawArc) {
 	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
@@ -169,14 +164,18 @@ function drawEnd() { // Draw The End Canvas
 }
 function stepSix() { // Ending Page
 	drawEnd();
+	var photoDownload = eCanvas.toDataURL('image/png');
+	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
 	document.getElementById("stickerSection").style.display = "none";
 	document.getElementById("endSection").style.display = "block";
 }
 function stepSeven() { // Reset To The Start To Take Another Picture
-	console.warn("RESETTING TO START");
+	document.getElementById("endSection").style.display = "none";
+	frameNum = 0; // Reset Frame To None
+	stickers = []; // Reset To No Set Stickers
+	sticker = {x: 90, y: 90, i: 1}; // Reset Current Sticker
+	// Go Back To Step 2
+	step = 2;
+	stepTwo();
 }
-/*function changeElement() {
-	var videoC = document.getElementById("videoContainer");
-	videoC.style.width = video.videoHeight + "px";
-	videoC.style.height = video.videoHeight + "px";
-}*/
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
