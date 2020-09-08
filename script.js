@@ -144,7 +144,12 @@ function touchableStickers() {
 			touchObjTwo = e.changedTouches[1]; // Get Second Finger Touchpoint
 			hyp = Math.sqrt((touchObj.clientX-touchObjTwo.clientX)*(touchObj.clientX-touchObjTwo.clientX) + (touchObj.clientY-touchObjTwo.clientY)*(touchObj.clientY-touchObjTwo.clientY));
 
-			sticker.s += (hyp - lastHyp) / 100;
+			if (hyp > lastHyp) {
+				sticker.s += (hyp - lastHyp) / 100;
+			} else {
+				sticker.s -= (lastHyp - hyp) / 100;
+			}
+
 			if (sticker.s < 0.05) {
 				sticker.s = 0.05;
 			} else if (sticker.s > 1) {
