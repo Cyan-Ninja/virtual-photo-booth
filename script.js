@@ -176,13 +176,11 @@ function stepFive() { // Set Stickers
 }
 function drawEnd() { // Draw The End Canvas
 	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
-	var eImg = new Image();
-	eImg.src = "stickers/" + sticker.i + ".png";
-	for (var eNum = 0; eNum < stickers.length; eNum++) {
-		console.log(sticker[eNum]);
-		let eImgNew = new Image();
-		eImgNew.src = "stickers/" + stickers[eNum].i + ".png";
-		eCanvas.getContext("2d").drawImage(eImgNew, stickers[eNum].x, stickers[eNum].y);
+	for (var num = 0; num < stickers.length; num++) {
+		console.log(sticker[num]);
+		let sImgNew = new Image();
+		sImgNew.src = "stickers/" + stickers[num].i + ".png";
+		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * stickers[num].s, sCanvas.width * stickers[num].s);
 	}
 }
 function stepSix() { // Ending Page
