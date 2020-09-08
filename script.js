@@ -149,6 +149,8 @@ function touchableStickers() {
 			hyp = Math.abs(hyp);
 
 			sticker.s += (hyp - lastHyp) / 100;
+			sticker.x -= xDist - xDistLast; // Revert The Singletouch
+			sticker.y -= yDist - yDistLast; // Revert The Singletouch
 
 			if (sticker.s < 0) {
 				sticker.s = 0;
