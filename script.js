@@ -102,7 +102,7 @@ function removeSticker() {
 	drawSticker(true);
 }
 function setSticker() {
-	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i, sticker.s});
+	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i, s: sticker.s});
 	sticker = {x: 90, y: 90, i: 1, s: 0.5};
 	drawSticker(true);
 }
