@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 0.5}, eCanvas = document.getElementById("endCanvas");
 function stepper() {
 	step++;
 	switch (step) {
@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -85,10 +85,10 @@ function drawSticker(drawArc) {
 		console.log(sticker[num]);
 		let sImgNew = new Image();
 		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y);
+		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * sticker.s, sCanvas.width * sticker.s);
 	}
 	if (sticker.i > 0) {
-		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y);
+		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y, sCanvas.width * sticker.s, sCanvas.width * sticker.s);
 		if (drawArc) {
 			sCanvas.getContext("2d").beginPath();
 			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 22.5, 0, 2 * Math.PI);
@@ -103,26 +103,34 @@ function removeSticker() {
 }
 function setSticker() {
 	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i});
-	sticker = {x: 90, y: 90, i: 1};
+	sticker = {x: 90, y: 90, i: 1, s: 0.5};
 	drawSticker(true);
 }
 function touchableStickers() {
-	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast;
+	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObj2, touchStartX2, touchStartY2, hyp, lastHyp;
 	sCanvas.addEventListener('touchstart', function(e){
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
-		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
-		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
-		xDist = touchStartX; // Reset
-		yDist = touchStartY; // Reset
-		xDistLast = touchStartX; // Reset
-		yDistLast = touchStartY; // Reset
+		if (e.changedTouches.length > 1) { // Multiple Fingers?
+			touchObj2 = e.changedTouches[1]; // Get Second Finger Touchpoint
+			touchStartX2 = parseInt(touchObj2.clientX);
+			touchStartY2 = parseInt(touchObj2.clientY);
+			hyp = Math.sqrt(Math.pow(Math.abs(touchObj2.clientX - touchObj.clientX), 2) + Math.pow(Math.abs(touchObj2.clientY - touchObj.clientY), 2)); // Pythagoreas Theorem To Get Distance Between Points
+		}
+		touchStartX = parseInt(touchObj.clientX);
+		touchStartY = parseInt(touchObj.clientY);
+		xDist = 0; // Reset
+		yDist = 0; // Reset
+		xDistLast = 0; // Reset
+		yDistLast = 0; // Reset
+		lastHyp = hyp; // Reset
 		e.preventDefault(); // Stop Gestured Scrolling
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
+		console.log("TouchStart2  X: " + touchStartX2 + "  Y: " + touchStartY2);
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
-		touchobj = e.changedTouches[0] // Get First Finger Touchpoint
-		xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
-		yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
+		touchObj = e.changedTouches[0] // Get First Finger Touchpoint
+		xDist = parseInt(touchObj.clientX) - touchStartX; // Calculate Current X Distance From Start X
+		yDist = parseInt(touchObj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
 		console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
 		// Change Current Sticker Coordinates Based On Relative Coordinate Distance
 		sticker.x += xDist - xDistLast;
@@ -140,6 +148,17 @@ function touchableStickers() {
 		drawSticker(true);
 		xDistLast = xDist;
 		yDistLast = yDist;
+		// Change Scale If Distance Between Points Grows/Shrinks
+		if (e.changedTouches.length > 1) { // Multiple Fingers?
+			touchObj2 = e.changedTouches[1]; // Get Second Finger Touchpoint
+
+			hyp = Math.sqrt(Math.pow(Math.abs(touchObj2.clientX - touchObj.clientX), 2) + Math.pow(Math.abs(touchObj2.clientY - touchObj.clientY), 2));
+			console.log(hyp); // Pythagoreas Theorem To Get Distance Between Points
+
+			sticker.s += (hyp - lastHyp) / 100;
+
+			lastHyp = hyp;
+		}
 	}, false)
 }
 function stepFive() { // Set Stickers
@@ -173,9 +192,8 @@ function stepSeven() { // Reset To The Start To Take Another Picture
 	document.getElementById("endSection").style.display = "none";
 	frameNum = 0; // Reset Frame To None
 	stickers = []; // Reset To No Set Stickers
-	sticker = {x: 90, y: 90, i: 1}; // Reset Current Sticker
+	sticker = {x: 90, y: 90, i: 1, s: 0.5}; // Reset Current Sticker
 	// Go Back To Step 2
 	step = 2;
 	stepTwo();
 }
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1}, eCanvas = document.getElementById("endCanvas");
