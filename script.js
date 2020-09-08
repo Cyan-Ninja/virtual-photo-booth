@@ -107,7 +107,7 @@ function setSticker() {
 	drawSticker(true);
 }
 function touchableStickers() {
-	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp;
+	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp, firstTimeHyp = true;
 	sCanvas.addEventListener('touchstart', function(e){
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
 		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
@@ -118,6 +118,7 @@ function touchableStickers() {
 		yDistLast = 0; // Reset
 		hyp = 0; // Reset
 		lastHyp = 0; // Reset
+		firstTimeHyp = true; // Reset
 		e.preventDefault(); // Stop Gestured Scrolling
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
 	}, false)
@@ -148,7 +149,11 @@ function touchableStickers() {
 
 			hyp = Math.abs(hyp);
 
-			sticker.s += (hyp - lastHyp) / 1000;
+			if (!firstTimeHyp) {
+				sticker.s += (hyp - lastHyp) / 1000;
+			} else {
+				firstTimeHyp = false;
+			}
 
 			if (sticker.s < 0) {
 				sticker.s = 0;
