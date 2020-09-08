@@ -154,7 +154,7 @@ function touchableStickers() {
 			hyp = Math.sqrt(Math.pow(Math.abs(touchObj2.clientX - touchObj.clientX), 2) + Math.pow(Math.abs(touchObj2.clientY - touchObj.clientY), 2));
 			console.log(hyp); // Pythagoreas Theorem To Get Distance Between Points
 
-			sticker.s += (hyp - lastHyp) / 100;
+			//sticker.s += (hyp - lastHyp) / 100;
 			if (sticker.s < 0.05) {
 				sticker.s = 0.05;
 			} else if (sticker.s > 1) {
