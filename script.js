@@ -138,8 +138,8 @@ function touchableStickers() {
 			sticker.y = sCanvas.height;
 		}
 
-		if (e.changedTouches > 1) {
-			alert("Multitouch Detected!");
+		if (e.changedTouches.length > 1) {
+			alert("Multitouch Move Detected!");
 		}
 
 		drawSticker(true);
