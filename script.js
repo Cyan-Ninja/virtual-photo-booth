@@ -107,20 +107,22 @@ function setSticker() {
 	drawSticker(true);
 }
 function touchableStickers() {
-	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast;
+	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp;
 	sCanvas.addEventListener('touchstart', function(e){
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
 		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
 		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
-		xDist = touchStartX; // Reset
-		yDist = touchStartY; // Reset
-		xDistLast = touchStartX; // Reset
-		yDistLast = touchStartY; // Reset
+		xDist = 0; // Reset
+		yDist = 0; // Reset
+		xDistLast = 0; // Reset
+		yDistLast = 0; // Reset
+		hyp = 0; // Reset
+		lastHyp = 0; // Reset
 		e.preventDefault(); // Stop Gestured Scrolling
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
-		touchobj = e.changedTouches[0] // Get First Finger Touchpoint
+		touchobj = e.changedTouches[0]; // Get First Finger Touchpoint
 		xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
 		yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
 		console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
@@ -139,7 +141,10 @@ function touchableStickers() {
 		}
 
 		if (e.changedTouches.length > 1) {
-			alert("Multitouch Move Detected!");
+			touchObjTwo = e.changedTouches[1]; // Get Second Finger Touchpoint
+			hyp = Math.sqrt((touchObj.clientX-touchObjTwo.clientX)*(touchObj.clientX-touchObjTwo.clientX) + (touchObj.clientY-touchObjTwo.clientY)*(touchObj.clientY-touchObjTwo.clientY));
+			alert("Hypotenuse: " + hyp + "  Last Hypotenuse: " + lastHyp);
+			lastHyp = hyp;
 		}
 
 		drawSticker(true);
