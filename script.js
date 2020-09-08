@@ -145,6 +145,11 @@ function touchableStickers() {
 			hyp = Math.sqrt((touchObj.clientX-touchObjTwo.clientX)*(touchObj.clientX-touchObjTwo.clientX) + (touchObj.clientY-touchObjTwo.clientY)*(touchObj.clientY-touchObjTwo.clientY));
 
 			sticker.s += (hyp - lastHyp) / 10;
+			if (sticker.s < 0.05) {
+				sticker.s = 0.05;
+			} else if (sticker.s > 1) {
+				sticker.s = 1;
+			}
 
 			lastHyp = hyp;
 		}
