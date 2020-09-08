@@ -143,7 +143,9 @@ function touchableStickers() {
 		if (e.changedTouches.length > 1) {
 			touchObjTwo = e.changedTouches[1]; // Get Second Finger Touchpoint
 			hyp = Math.sqrt((touchObj.clientX-touchObjTwo.clientX)*(touchObj.clientX-touchObjTwo.clientX) + (touchObj.clientY-touchObjTwo.clientY)*(touchObj.clientY-touchObjTwo.clientY));
-			alert("Hypotenuse: " + hyp + "  Last Hypotenuse: " + lastHyp);
+
+			sticker.s += (hyp - lastHyp) / 10;
+
 			lastHyp = hyp;
 		}
 
