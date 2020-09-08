@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -107,30 +107,22 @@ function setSticker() {
 	drawSticker(true);
 }
 function touchableStickers() {
-	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObj2, touchStartX2, touchStartY2, hyp, lastHyp;
+	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast;
 	sCanvas.addEventListener('touchstart', function(e){
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
-		if (e.changedTouches.length > 1) { // Multiple Fingers?
-			touchObj2 = e.changedTouches[1]; // Get Second Finger Touchpoint
-			touchStartX2 = parseInt(touchObj2.clientX);
-			touchStartY2 = parseInt(touchObj2.clientY);
-			hyp = Math.sqrt(Math.pow(Math.abs(touchObj2.clientX - touchObj.clientX), 2) + Math.pow(Math.abs(touchObj2.clientY - touchObj.clientY), 2)); // Pythagoreas Theorem To Get Distance Between Points
-		}
-		touchStartX = parseInt(touchObj.clientX);
-		touchStartY = parseInt(touchObj.clientY);
-		xDist = 0; // Reset
-		yDist = 0; // Reset
-		xDistLast = 0; // Reset
-		yDistLast = 0; // Reset
-		lastHyp = hyp; // Reset
+		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
+		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
+		xDist = touchStartX; // Reset
+		yDist = touchStartY; // Reset
+		xDistLast = touchStartX; // Reset
+		yDistLast = touchStartY; // Reset
 		e.preventDefault(); // Stop Gestured Scrolling
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
-		console.log("TouchStart2  X: " + touchStartX2 + "  Y: " + touchStartY2);
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
-		touchObj = e.changedTouches[0] // Get First Finger Touchpoint
-		xDist = parseInt(touchObj.clientX) - touchStartX; // Calculate Current X Distance From Start X
-		yDist = parseInt(touchObj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
+		touchobj = e.changedTouches[0] // Get First Finger Touchpoint
+		xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
+		yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
 		console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
 		// Change Current Sticker Coordinates Based On Relative Coordinate Distance
 		sticker.x += xDist - xDistLast;
@@ -145,25 +137,9 @@ function touchableStickers() {
 		} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
 			sticker.y = sCanvas.height;
 		}
+		drawSticker(true);
 		xDistLast = xDist;
 		yDistLast = yDist;
-		// Change Scale If Distance Between Points Grows/Shrinks
-		if (e.changedTouches.length > 1) { // Multiple Fingers?
-			touchObj2 = e.changedTouches[1]; // Get Second Finger Touchpoint
-
-			hyp = Math.sqrt(Math.pow(Math.abs(touchObj2.clientX - touchObj.clientX), 2) + Math.pow(Math.abs(touchObj2.clientY - touchObj.clientY), 2));
-			console.log(hyp); // Pythagoreas Theorem To Get Distance Between Points
-
-			sticker.s += (hyp - lastHyp) / 100;
-			if (sticker.s < 0.05) {
-				sticker.s = 0.05;
-			} else if (sticker.s > 1) {
-				sticker.s = 1;
-			}
-
-			lastHyp = hyp;
-		}
-		drawSticker(true);
 	}, false)
 }
 function stepFive() { // Set Stickers
@@ -176,11 +152,11 @@ function stepFive() { // Set Stickers
 }
 function drawEnd() { // Draw The End Canvas
 	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
-	for (var num = 0; num < stickers.length; num++) {
-		console.log(sticker[num]);
-		let sImgNew = new Image();
-		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * stickers[num].s, sCanvas.width * stickers[num].s);
+	for (var eNum = 0; eNum < stickers.length; eNum++) {
+		console.log(sticker[eNum]);
+		let eImgNew = new Image();
+		eImgNew.src = "stickers/" + stickers[eNum].i + ".png";
+		eCanvas.getContext("2d").drawImage(eImgNew, stickers[eNum].x, stickers[eNum].y, eCanvas.width * stickers[eNum].s, eCanvas.width * stickers[eNum].s);
 	}
 }
 function stepSix() { // Ending Page
