@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
+		video.srcObject = videoStream;
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -85,7 +85,7 @@ function drawSticker(drawArc) {
 		console.log(sticker[num]);
 		let sImgNew = new Image();
 		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * sticker.s, sCanvas.width * sticker.s);
+		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * stickers[num].s, sCanvas.width * stickers[num].s);
 	}
 	if (sticker.i > 0) {
 		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y, sCanvas.width * sticker.s, sCanvas.width * sticker.s);
@@ -145,7 +145,6 @@ function touchableStickers() {
 		} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
 			sticker.y = sCanvas.height;
 		}
-		drawSticker(true);
 		xDistLast = xDist;
 		yDistLast = yDist;
 		// Change Scale If Distance Between Points Grows/Shrinks
@@ -156,8 +155,15 @@ function touchableStickers() {
 			console.log(hyp); // Pythagoreas Theorem To Get Distance Between Points
 
 			sticker.s += (hyp - lastHyp) / 100;
+			if (sticker.s < 0.05) {
+				sticker.s = 0.05;
+			} else if (sticker.s > 1) {
+				sticker.s = 1;
+			}
 
 			lastHyp = hyp;
+
+			drawSticker(true);
 		}
 	}, false)
 }
