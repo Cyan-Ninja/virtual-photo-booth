@@ -123,21 +123,23 @@ function touchableStickers() {
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
 		touchobj = e.changedTouches[0]; // Get First Finger Touchpoint
-		xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
-		yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
-		console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
-		// Change Current Sticker Coordinates Based On Relative Coordinate Distance
-		sticker.x += xDist - xDistLast;
-		sticker.y += yDist - yDistLast;
-		if (sticker.x < 0) { // Can't Go Left Off Canvas
-			sticker.x = 0;
-		} else if (sticker.x > sCanvas.width) { // Can't Go Right Off Canvas
-			sticker.x = sCanvas.width;
-		}
-		if (sticker.y < 0) { // Can't Go Up Off Canvas
-			sticker.y = 0;
-		} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
-			sticker.y = sCanvas.height;
+		if (e.changedTouches.length == 1) {
+			xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
+			yDist = parseInt(touchobj.clientY) - touchStartY; // Calculate Current Y Distance From Start Y
+			console.log("TouchMove  Xdist: " + xDist + "  Ydist: " + yDist);
+			// Change Current Sticker Coordinates Based On Relative Coordinate Distance
+			sticker.x += xDist - xDistLast;
+			sticker.y += yDist - yDistLast;
+			if (sticker.x < 0) { // Can't Go Left Off Canvas
+				sticker.x = 0;
+			} else if (sticker.x > sCanvas.width) { // Can't Go Right Off Canvas
+				sticker.x = sCanvas.width;
+			}
+			if (sticker.y < 0) { // Can't Go Up Off Canvas
+				sticker.y = 0;
+			} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
+				sticker.y = sCanvas.height;
+			}
 		}
 
 		if (e.changedTouches.length > 1) {
