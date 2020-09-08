@@ -162,24 +162,7 @@ function touchableStickers() {
 			}
 
 			lastHyp = hyp;
-		} else {
-			// Change Current Sticker Coordinates Based On Relative Coordinate Distance
-			sticker.x += xDist - xDistLast;
-			sticker.y += yDist - yDistLast;
-			if (sticker.x < 0) { // Can't Go Left Off Canvas
-				sticker.x = 0;
-			} else if (sticker.x > sCanvas.width) { // Can't Go Right Off Canvas
-				sticker.x = sCanvas.width;
-			}
-			if (sticker.y < 0) { // Can't Go Up Off Canvas
-				sticker.y = 0;
-			} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
-				sticker.y = sCanvas.height;
-			}
 		}
-		xDistLast = xDist;
-		yDistLast = yDist;
-
 		drawSticker(true);
 	}, false)
 }
