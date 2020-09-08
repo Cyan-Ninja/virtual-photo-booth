@@ -137,6 +137,11 @@ function touchableStickers() {
 		} else if (sticker.y > sCanvas.height) { // Can't Go Down Off Canvas
 			sticker.y = sCanvas.height;
 		}
+
+		if (e.changedTouches > 1) {
+			alert("Multitouch Detected!");
+		}
+
 		drawSticker(true);
 		xDistLast = xDist;
 		yDistLast = yDist;
