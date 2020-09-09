@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 0.5}, eCanvas = document.getElementById("endCanvas");
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}, eCanvas = document.getElementById("endCanvas");
 function stepper() {
 	step++;
 	switch (step) {
@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -63,7 +63,7 @@ function setFrame(newFrameNum) { // Choose & Draw Frame/Canvas
 	if (frameNum > 0) {
 		var fImg = new Image();
 		fImg.src = "frames/" + frameNum + ".png";
-		fCanvas.getContext("2d").drawImage(fImg, 0, 0);
+		fCanvas.getContext("2d").drawImage(fImg, 0, 0, fCanvas.width, fCanvas.height);
 	}
 }
 function stepFour() { // Set Frame
@@ -85,16 +85,26 @@ function drawSticker(drawArc) {
 		console.log(sticker[num]);
 		let sImgNew = new Image();
 		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sCanvas.width * stickers[num].s, sCanvas.width * stickers[num].s);
+		let degrees = stickers[num].d; // Test Degrees
+		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		sCanvas.getContext("2d").drawImage(sImgNew, sImgNew.width / 2, sImgNew.height / 2);
+		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
 	}
 	if (sticker.i > 0) {
-		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y, sCanvas.width * sticker.s, sCanvas.width * sticker.s);
+		let degrees = sticker.d; // Test Degrees
+		sCanvas.getContext("2d").setTransform(sticker.s, 0, 0, sticker.s, sticker.x, sticker.y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		sCanvas.getContext("2d").drawImage(sImg, sImg.width / 2, sImg.height / 2);
 		if (drawArc) {
 			sCanvas.getContext("2d").beginPath();
-			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 22.5, 0, 2 * Math.PI);
+			sCanvas.getContext("2d").arc(sImg.width   / 2, sImg.height / 2, 6.9, 0, 2 * Math.PI);
 			sCanvas.getContext("2d").stroke();
 			sCanvas.getContext("2d").closePath();
 		}
+		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
 	}
 }
 function removeSticker() {
@@ -103,7 +113,7 @@ function removeSticker() {
 }
 function setSticker() {
 	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i, s: sticker.s});
-	sticker = {x: 90, y: 90, i: 1, s: 0.5};
+	sticker = {x: 90, y: 90, i: 1, s: 1, d: 0};
 	drawSticker(true);
 }
 function touchableStickers() {
@@ -175,13 +185,7 @@ function stepFive() { // Set Stickers
 	document.getElementById("stickerSection").style.display = "block";
 }
 function drawEnd() { // Draw The End Canvas
-	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
-	for (var eNum = 0; eNum < stickers.length; eNum++) {
-		console.log(sticker[eNum]);
-		let eImgNew = new Image();
-		eImgNew.src = "stickers/" + stickers[eNum].i + ".png";
-		eCanvas.getContext("2d").drawImage(eImgNew, stickers[eNum].x, stickers[eNum].y, eCanvas.width * stickers[eNum].s, eCanvas.width * stickers[eNum].s);
-	}
+	// Copy Stickers Part Here
 }
 function stepSix() { // Ending Page
 	drawEnd();
@@ -195,7 +199,7 @@ function stepSeven() { // Reset To The Start To Take Another Picture
 	document.getElementById("endSection").style.display = "none";
 	frameNum = 0; // Reset Frame To None
 	stickers = []; // Reset To No Set Stickers
-	sticker = {x: 90, y: 90, i: 1, s: 0.5}; // Reset Current Sticker
+	sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}; // Reset Current Sticker
 	// Go Back To Step 2
 	step = 2;
 	stepTwo();
