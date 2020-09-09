@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
+		video.srcObject = videoStream;
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -112,7 +112,7 @@ function removeSticker() {
 	drawSticker(true);
 }
 function setSticker() {
-	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i, s: sticker.s});
+	stickers.push({x: sticker.x, y: sticker.y, i: sticker.i, s: sticker.s, d: sticker.d});
 	sticker = {x: 90, y: 90, i: 1, s: 1, d: 0};
 	drawSticker(true);
 }
@@ -185,7 +185,18 @@ function stepFive() { // Set Stickers
 	document.getElementById("stickerSection").style.display = "block";
 }
 function drawEnd() { // Draw The End Canvas
-	// Copy Stickers Part Here
+	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
+	for (var num = 0; num < stickers.length; num++) {
+		console.log(sticker[num]);
+		let eImgNew = new Image();
+		eImgNew.src = "stickers/" + stickers[num].i + ".png";
+		let degrees = stickers[num].d; // Test Degrees
+		eCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+		eCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		eCanvas.getContext("2d").drawImage(eImgNew, eImgNew.width / 2, eImgNew.height / 2);
+		eCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+		eCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+	}
 }
 function stepSix() { // Ending Page
 	drawEnd();
