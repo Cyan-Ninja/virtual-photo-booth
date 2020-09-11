@@ -7,48 +7,55 @@
 		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 	<body>
-		<p>[V36h, Working & Stable]</p><br>
 		<button type="button" name="button" id="startStepper" onclick="stepper();">Start<br></button>
 		<div id="videoSection" class="section">
 			<video autoplay id="video"></video><br>
-			<button type="button" name="button" id="stepper" onclick="stepper();">Snap</button><br>
+			<button type="button" name="button" onclick="stepper();">Snap</button><br>
 			<p>Note: Picture will be square when taken.</p><br>
 		</div>
 		<div id="pictureSection" class="section">
 			<canvas id="pictureCanvas" width="720" height="720"></canvas><br>
-			<button type="button" name="button" id="stepper" onclick="retakePicture();">Retake</button><button type="button" name="button" id="stepper" onclick="stepper();">Continue</button><br>
+			<button type="button" name="button" onclick="retakePicture();">Retake</button><button type="button" name="button" onclick="stepper();">Continue</button><br>
 		</div>
 		<div id="frameSection" class="section">
 			<canvas id="frameCanvas" width="720" height="720"></canvas><br>
-			<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
-			<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1...</button><br>
-			<button type="button" name="button" id="stepper" onclick="stepper();">Continue</button>
+			<div class="flex-buttons">
+				<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1...</button><br>
+				<button type="button" name="button" onclick="stepper();">Continue</button>
+			</div>
 		</div>
 		<div id="stickerSection" class="section">
 			<canvas id="stickerCanvas" width="720" height="720"></canvas><br>
-			<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);">Sticker 1...</button><br>
-			<button type="button" name="button" class="stickerButton" onclick="
-				sticker.s -= 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
-			">Shrink</button>
-			<button type="button" name="button" class="stickerButton" onclick="
-				sticker.s += 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
-			">Grow</button>
-			<button type="button" name="button" class="stickerButton" onclick="
-				sticker.d -= 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
-			">&#8630;Rotate</button>
-			<button type="button" name="button" class="stickerButton" onclick="
-				sticker.d += 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.ds>=360){sticker.d=0;}drawSticker(true);
-			">Rotate&#8631;</button>
-			<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
-			<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
-			<button type="button" name="button" id="stepper" onclick="stepper();">Continue</button>
+			<div class="flex-buttons">
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);">Sticker 1...</button><br>
+			</div>
+			<div class="flex-buttons">
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.s -= 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
+				">Shrink</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.s += 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
+				">Grow</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d -= 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
+				">&#8630;Rotate</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d += 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.ds>=360){sticker.d=0;}drawSticker(true);
+				">Rotate&#8631;</button>
+			</div>
+			<div class="flex-buttons">
+				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
+				<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
+				<button type="button" name="button" onclick="stepper();">Continue</button>
+			</div>
 		</div>
 		<div id="endSection" class="section">
 			<canvas id="endCanvas" width="720" height="720"></canvas><br>
 			<a href="" download="Virtual Photo Booth.png" class="download" id="photoDownload">[Download .PNG]</a>
-			<script src="https://apis.google.com/js/platform.js" async defer></script>
+			<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 			<div id="photoDrive" class="g-savetodrive" data-src="" data-filename="Virtual Photo Booth.png" data-sitename="Virtual Photo Booth"></div>
-			<button type="button" name="button" id="stepper" onclick="stepper();">Take Another</button>
+			<button type="button" name="button" onclick="stepper();">Take Another</button>
 		</div>
 		<script src="script.js" charset="utf-8" type="text/javascript"></script>
 	</body>

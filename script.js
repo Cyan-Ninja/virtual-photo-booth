@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -201,6 +201,7 @@ function drawEnd() { // Draw The End Canvas
 function stepSix() { // Ending Page
 	drawEnd();
 	var photoDownload = eCanvas.toDataURL('image/png');
+	console.log("Image Data URL: " + photoDownload);
 	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	document.getElementById("stickerSection").style.display = "none";

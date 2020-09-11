@@ -1,24 +1,136 @@
 /* Main (And Only) Stylesheet */
-
+	/* Extra Small (<576px) [Portrait Phones] */
 * {
-	margin: 0.5vh;
+	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-color: #eee;
+	background-color: #393;
 	color: #111;
 	font-size: 1em;
 	font-family: Arial, sans-serif;
 	text-align: center;
 }
-
 .section {
 	display: none;
 }
-
-video {
-	width: 50vw;
-}
-
 canvas {
-	width: 50vw;
+	margin: 0;
+	padding: 0;
+	height: 90vh;
 }
+button {
+	height: 7.5vh;
+	flex: 1;
+	margin: 0.3125vh 0.625vw;
+	background-color: #ec0;
+	border-color: #ca0;
+	border-width: 1vw;
+	border-radius: 10vw;
+	font-size: 3.75vh;
+}
+.flex-buttons {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+/*Start Section*/
+#startStepper {
+	width: 33.333vw;
+	height: 33.333vh;
+	margin: 33.333vh 33.333vw;
+	background-color: #ec0;
+	border-color: #ca0;
+	border-width: 2.083vw;
+	border-radius: 16.666vw;
+	font-size: 7.75vh;
+}
+
+/*Video Section*/
+video {
+	height: 85vh;
+}
+#videoSection button {
+	width: 40vw;
+}
+#videoSection p {
+	width: 100vw;
+	height: 2.5vh;
+	font-size: 2.5vh;
+}
+
+/*Picture Section*/
+#pictureSection button {
+	width: 40vw;
+	margin: 0 2.5vw;
+}
+
+/*Frame Section*/
+#frameSection button {
+	width: 40vw;
+}
+
+/*Sticker Section*/
+#stickerCanvas {
+	height: 75vh;
+}
+#stickerSection button {
+	font-size: 3.125vh;
+}
+
+/*End Section*/
+#endCanvas {
+	height: 85vh;
+}
+#photoDownload {
+	width: 100vw;
+	height: 6.25vh;
+	font-size: 3.125vh;
+}
+#endSection button {
+	width: 33.333vw;
+	height: 10vh;
+	font-size: 3.75vh;
+}
+
+	/* Landscape Orientation */
+@media (orientation: portrait) {
+	video {
+		width: 100vw;
+		height: auto;
+		margin: calc((85vh - 100vw) / 2) 0;
+	}
+	canvas {
+		width: 100vw;
+		height: 100vw;
+		margin: calc((90vh - 100vw) / 2) 0;
+	}
+	#stickerCanvas {
+		width: 100vw;
+		height: 100vw;
+		margin: calc((75vh - 100vw) / 2) 0;
+	}
+	#endCanvas {
+		width: 100vw;
+		height: 100vw;
+		margin: calc((85vh - 100vw) / 2) 0;
+	}
+}
+
+	/* Small (>576px) [Landscape Phones] */
+/*@media (min-width: 576px) {
+
+}*/
+
+	/* Medium (>768px) [Tablets]*/
+/*@media (min-width: 768px) {
+
+}*/
+	/* Large (>992px) [Desktops]*/
+/*@media (min-width: 992px) {
+
+}*/
+
+	/* Extra Large (>1200px) [Large Desktops] */
+/*@media (min-width: 1200px) {
+
+}*/
