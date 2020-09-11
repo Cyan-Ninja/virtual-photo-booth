@@ -36,13 +36,13 @@ button {
 /*Start Section*/
 #startStepper {
 	width: 33.333vw;
-	height: 33.333vh;
-	margin: 33.333vh 33.333vw;
+	height: 33.333vw;
+	margin: calc((100vh - 33.333vw) / 2) 33.333vw;
 	background-color: #ec0;
 	border-color: #ca0;
 	border-width: 2.083vw;
 	border-radius: 16.666vw;
-	font-size: 7.75vh;
+	font-size: 10vw;
 }
 
 /*Video Section*/
