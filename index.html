@@ -14,11 +14,11 @@
 			<p>Note: Picture will be square when taken.</p><br>
 		</div>
 		<div id="pictureSection" class="section">
-			<canvas id="pictureCanvas" width="720" height="720"></canvas><br>
+			<canvas id="pictureCanvas" width="1080" height="1080"></canvas><br>
 			<button type="button" name="button" onclick="retakePicture();">Retake</button><button type="button" name="button" onclick="stepper();">Continue</button><br>
 		</div>
 		<div id="frameSection" class="section">
-			<canvas id="frameCanvas" width="720" height="720"></canvas><br>
+			<canvas id="frameCanvas" width="1080" height="1080"></canvas><br>
 			<div class="flex-buttons">
 				<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
 				<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1</button><br>
@@ -26,9 +26,12 @@
 			</div>
 		</div>
 		<div id="stickerSection" class="section">
-			<canvas id="stickerCanvas" width="720" height="720"></canvas><br>
+			<canvas id="stickerCanvas" width="1080" height="1080"></canvas><br>
 			<div class="flex-buttons">
-				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);">Sticker 1</button><br>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);"><img src="stickers/1.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(2);"><img src="stickers/2.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(3);"><img src="stickers/3.png" /></button><br>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(17);"><img src="stickers/17.png" /></button>
 			</div>
 			<div class="flex-buttons">
 				<button type="button" name="button" class="stickerButton" onclick="
@@ -37,21 +40,19 @@
 				<button type="button" name="button" class="stickerButton" onclick="
 					sticker.s += 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
 				">Grow</button>
-				<button type="button" name="button" class="stickerButton" onclick="
+				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
+				<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
+				<button type="button" name="button" onclick="stepper();">Continue</button>
+				<!--<button type="button" name="button" class="stickerButton" onclick="
 					sticker.d -= 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
 				">&#8630;Rotate</button>
 				<button type="button" name="button" class="stickerButton" onclick="
 					sticker.d += 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.ds>=360){sticker.d=0;}drawSticker(true);
-				">Rotate&#8631;</button>
-			</div>
-			<div class="flex-buttons">
-				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
-				<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
-				<button type="button" name="button" onclick="stepper();">Continue</button>
+				">Rotate&#8631;</button>-->
 			</div>
 		</div>
 		<div id="endSection" class="section">
-			<canvas id="endCanvas" width="720" height="720"></canvas><br>
+			<canvas id="endCanvas" width="1080" height="1080"></canvas><br>
 			<a href="" download="Virtual Photo Booth.png" class="download" id="photoDownload">[Download .PNG]</a>
 			<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
 			<div id="photoDrive" class="g-savetodrive" data-src="" data-filename="Virtual Photo Booth.png" data-sitename="Virtual Photo Booth"></div>

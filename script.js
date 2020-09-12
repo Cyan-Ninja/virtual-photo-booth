@@ -27,9 +27,9 @@ function stepper() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -94,17 +94,17 @@ function drawSticker(drawArc) {
 	}
 	if (sticker.i > 0) {
 		let degrees = sticker.d; // Test Degrees
-		sCanvas.getContext("2d").setTransform(sticker.s, 0, 0, sticker.s, sticker.x, sticker.y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		sCanvas.getContext("2d").drawImage(sImg, sImg.width / 2, sImg.height / 2);
+//		sCanvas.getContext("2d").setTransform(sticker.s, 0, 0, sticker.s, sticker.x, sticker.y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y);
 		if (drawArc) {
 			sCanvas.getContext("2d").beginPath();
-			sCanvas.getContext("2d").arc(sImg.width   / 2, sImg.height / 2, 6.9, 0, 2 * Math.PI);
+			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 6.9, 0, 2 * Math.PI);
 			sCanvas.getContext("2d").stroke();
 			sCanvas.getContext("2d").closePath();
 		}
-		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
 	}
 }
 function removeSticker() {
