@@ -8,7 +8,6 @@
 	font-size: 1em;
 	font-family: Arial, sans-serif;
 	text-align: center;
-	overflow: hidden;
 }
 body {
 	background-color: #393;
@@ -44,14 +43,15 @@ button {
 
 /*Start Section*/
 #startStepper {
-	width: 33.333vw;
-	height: 33.333vw;
-	margin: calc((100vh - 33.333vw) / 2) 33.333vw;
+	width: 20vw;
+	height: 20vw;
+	margin: 2.5vw;
 	background-color: #ec0;
 	border-color: #ca0;
-	border-width: 2.083vw;
-	border-radius: 16.666vw;
-	font-size: 10vw;
+	border-width: 1.5625vw;
+	border-radius: 10vw;
+	font-size: 6.25vw;
+	float: left;
 }
 
 /*Video Section*/
@@ -132,34 +132,40 @@ video {
 	/* Landscape Orientation */
 @media (orientation: portrait) {
 	body {
-		background-position: top right;
-		background-repeat: no-repeat;
 		background-size: auto 100vh;
 	}
 	video {
-		width: 100vw;
+		width: 90vh;
 		height: auto;
-		margin: calc((85vh - 100vw) / 2) 0;
 	}
 	canvas {
-		width: 100vw;
-		height: 100vw;
-		margin: calc((90vh - 100vw) / 2) 0;
+		width: 90vw;
+		height: 90vw;
 	}
+	/*Start Section*/
+	#startStepper {
+		width: 20vh;
+		height: 20vh;
+		margin: 2.5vh;
+		background-color: #ec0;
+		border-color: #ca0;
+		border-width: 1.5625vh;
+		border-radius: 10vh;
+		font-size: 6.25vh;
+		float: left;
+	}
+	/*Sticker Section*/
 	#stickerCanvas {
-		width: 100vw;
-		height: 100vw;
-		margin: calc((85vh - 100vw) / 2) 0;
+		width: 90vw;
+		height: 90vw;
 	}
+	/*End Section*/
 	#endSection {
-		background-position: top right;
-		background-repeat: no-repeat;
 		background-size: auto 100vh;
 	}
 	#endCanvas {
-		width: 100vw;
-		height: 100vw;
-		margin: calc((85vh - 100vw) / 2) 0;
+		width: 90vw;
+		height: 90vw;
 	}
 }
 
