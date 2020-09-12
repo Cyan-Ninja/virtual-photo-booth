@@ -19,7 +19,7 @@
 		</div>
 		<div id="frameSection" class="section">
 			<canvas id="frameCanvas" width="1080" height="1080"></canvas><br>
-			<div class="flex-buttons">
+			<div class="flexButtons">
 				<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
 				<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1</button><br>
 				<button type="button" name="button" onclick="stepper();">Continue</button>
@@ -27,13 +27,7 @@
 		</div>
 		<div id="stickerSection" class="section">
 			<canvas id="stickerCanvas" width="1080" height="1080"></canvas><br>
-			<div class="flex-buttons">
-				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);"><img src="stickers/1.png" /></button>
-				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(2);"><img src="stickers/2.png" /></button>
-				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(3);"><img src="stickers/3.png" /></button><br>
-				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(17);"><img src="stickers/17.png" /></button>
-			</div>
-			<div class="flex-buttons">
+			<div class="flexButtons">
 				<button type="button" name="button" class="stickerButton" onclick="
 					sticker.s -= 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
 				">Shrink</button>
@@ -43,12 +37,46 @@
 				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">Remove Last</button>
 				<button type="button" name="button" class="stickerButton" onclick="setSticker();">Set Current</button>
 				<button type="button" name="button" onclick="stepper();">Continue</button>
-				<!--<button type="button" name="button" class="stickerButton" onclick="
-					sticker.d -= 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
-				">&#8630;Rotate</button>
-				<button type="button" name="button" class="stickerButton" onclick="
-					sticker.d += 5;if(sticker.d<-360){sticker.d=0;}else if(sticker.ds>=360){sticker.d=0;}drawSticker(true);
-				">Rotate&#8631;</button>-->
+			</div>
+			<div id="sticker-selection">
+				<!-- Dinosaur Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);"><img src="stickers/1.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(2);"><img src="stickers/2.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(3);"><img src="stickers/3.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(18);"><img src="stickers/18.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(19);"><img src="stickers/19.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(20);"><img src="stickers/20.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(21);"><img src="stickers/21.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(22);"><img src="stickers/22.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(23);"><img src="stickers/23.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(24);"><img src="stickers/24.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(25);"><img src="stickers/25.png" /></button>
+				<!-- Party Hat Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(26);"><img src="stickers/26.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(27);"><img src="stickers/27.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(28);"><img src="stickers/28.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(29);"><img src="stickers/29.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(30);"><img src="stickers/30.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(31);"><img src="stickers/31.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(32);"><img src="stickers/32.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(33);"><img src="stickers/33.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(34);"><img src="stickers/34.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(35);"><img src="stickers/35.png" /></button>
+				<!-- Cool Sunglasses Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(4);"><img src="stickers/4.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(5);"><img src="stickers/5.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(6);"><img src="stickers/6.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(7);"><img src="stickers/7.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(8);"><img src="stickers/8.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(9);"><img src="stickers/9.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(10);"><img src="stickers/10.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(11);"><img src="stickers/11.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(12);"><img src="stickers/12.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(13);"><img src="stickers/13.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(14);"><img src="stickers/14.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(15);"><img src="stickers/15.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(16);"><img src="stickers/16.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(17);"><img src="stickers/17.png" /></button>
 			</div>
 		</div>
 		<div id="endSection" class="section">

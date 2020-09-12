@@ -12,6 +12,7 @@
 }
 .section {
 	display: none;
+	overflow: hidden;
 }
 canvas {
 	margin: 0;
@@ -28,11 +29,13 @@ button {
 	border-radius: 10vw;
 	font-size: 3.75vh;
 }
-.flex-buttons {
+.flexButtons {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	flex-wrap: wrap;
 }
+
 /*Start Section*/
 #startStepper {
 	width: 33.333vw;
@@ -71,14 +74,18 @@ video {
 
 /*Sticker Section*/
 #stickerCanvas {
-	height: 75vh;
+	height: 85vh;
 }
 #stickerSection button {
+	height: 10vh;
 	font-size: 2.5vh;
 }
 #stickerSection button img {
-	height: 5vh;
+	height: 9.375vh;
+	background-color: rgba(0,0,0,0);
 }
+	/*Sticker Selection Overlay*/
+#stickerSelection
 
 /*End Section*/
 #endCanvas {
@@ -110,7 +117,7 @@ video {
 	#stickerCanvas {
 		width: 100vw;
 		height: 100vw;
-		margin: calc((75vh - 100vw) / 2) 0;
+		margin: calc((85vh - 100vw) / 2) 0;
 	}
 	#endCanvas {
 		width: 100vw;

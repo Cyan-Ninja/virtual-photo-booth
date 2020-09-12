@@ -82,21 +82,21 @@ function drawSticker(drawArc) {
 	var sImg = new Image();
 	sImg.src = "stickers/" + sticker.i + ".png";
 	for (var num = 0; num < stickers.length; num++) {
-		console.log(sticker[num]);
+		console.log(stickers[num]);
 		let sImgNew = new Image();
 		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-		let degrees = stickers[num].d; // Test Degrees
-		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		sCanvas.getContext("2d").drawImage(sImgNew, sImgNew.width / 2, sImgNew.height / 2);
-		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+//		let degrees = stickers[num].d; // Test Degrees
+//		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sImgNew.width *  stickers[num].s, sImgNew.height * stickers[num].s);
+//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
 	}
 	if (sticker.i > 0) {
-		let degrees = sticker.d; // Test Degrees
+//		let degrees = sticker.d; // Test Degrees
 //		sCanvas.getContext("2d").setTransform(sticker.s, 0, 0, sticker.s, sticker.x, sticker.y); // Transform Set To Sticker's Position For Rotation Around Clean Point
 //		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y);
+		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y, sImg.width * sticker.s, sImg.height * sticker.s);
 		if (drawArc) {
 			sCanvas.getContext("2d").beginPath();
 			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 6.9, 0, 2 * Math.PI);
@@ -119,6 +119,7 @@ function setSticker() {
 function touchableStickers() {
 	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp;
 	sCanvas.addEventListener('touchstart', function(e){
+		sCanvas.preventDefault();
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
 		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
 		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
@@ -132,6 +133,7 @@ function touchableStickers() {
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
+		sCanvas.preventDefault();
 		touchobj = e.changedTouches[0]; // Get First Finger Touchpoint
 		if (e.changedTouches.length == 1) {
 			xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
@@ -187,15 +189,15 @@ function stepFive() { // Set Stickers
 function drawEnd() { // Draw The End Canvas
 	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
 	for (var num = 0; num < stickers.length; num++) {
-		console.log(sticker[num]);
+		console.log(stickers[num]);
 		let eImgNew = new Image();
 		eImgNew.src = "stickers/" + stickers[num].i + ".png";
-		let degrees = stickers[num].d; // Test Degrees
-		eCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-		eCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		eCanvas.getContext("2d").drawImage(eImgNew, eImgNew.width / 2, eImgNew.height / 2);
-		eCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-		eCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+//		let degrees = stickers[num].d; // Test Degrees
+//		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
+//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
+		eCanvas.getContext("2d").drawImage(eImgNew, stickers[num].x, stickers[num].y, eImgNew.width *  stickers[num].s, eImgNew.height * stickers[num].s);
+//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
+//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
 	}
 }
 function stepSix() { // Ending Page
@@ -216,3 +218,7 @@ function stepSeven() { // Reset To The Start To Take Another Picture
 	step = 2;
 	stepTwo();
 }
+
+// TEMP: JUST FOR DEVELOPMENT TO GET TO STICKER SECTION
+document.getElementById("startStepper").style.display = "none";
+document.getElementById("stickerSection").style.display = "block";
