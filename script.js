@@ -118,9 +118,9 @@ function setSticker() {
 	drawSticker(true);
 }
 function touchableStickers() {
+	console.warn("TOUCHABLE STICKERS FUNC RUN");
 	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp;
 	sCanvas.addEventListener('touchstart', function(e){
-		sCanvas.preventDefault();
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
 		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
 		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
@@ -130,11 +130,9 @@ function touchableStickers() {
 		yDistLast = 0; // Reset
 		hyp = 0; // Reset
 		lastHyp = 0; // Reset
-		e.preventDefault(); // Stop Gestured Scrolling
 		console.log("TouchStart  X: " + touchStartX + "  Y: " + touchStartY);
 	}, false)
 	sCanvas.addEventListener('touchmove', function(e){
-		sCanvas.preventDefault();
 		touchobj = e.changedTouches[0]; // Get First Finger Touchpoint
 		if (e.changedTouches.length == 1) {
 			xDist = parseInt(touchobj.clientX) - touchStartX; // Calculate Current X Distance From Start X
@@ -181,7 +179,6 @@ function touchableStickers() {
 }
 function stepFive() { // Set Stickers
 	sCanvas.getContext("2d").lineWidth = 22.5;
-	chooseSticker(1);
 	drawSticker(false);
 	touchableStickers();
 	document.getElementById("frameSection").style.display = "none";
@@ -227,7 +224,3 @@ function stepSeven() { // Reset To The Start To Take Another Picture
 	step = 2;
 	stepTwo();
 }
-
-// TEMP: JUST FOR DEVELOPMENT TO GET TO STICKER SECTION
-document.getElementById("startStepper").style.display = "none";
-document.getElementById("stickerSection").style.display = "block";
