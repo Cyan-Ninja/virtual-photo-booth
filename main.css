@@ -4,12 +4,19 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-color: #393;
 	color: #111;
 	font-size: 1em;
 	font-family: Arial, sans-serif;
 	text-align: center;
 	overflow: hidden;
+}
+body {
+	background-color: #393;
+	background-image: url("background.png");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: auto 110%;
+
 }
 .section {
 	display: none;
