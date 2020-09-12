@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}, eCanvas = document.getElementById("endCanvas");
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}, eCanvas = document.getElementById("endCanvas"), stickerSelectionOpen = false;
 function stepper() {
 	step++;
 	switch (step) {
@@ -76,6 +76,7 @@ function chooseSticker(newNum) { // Set Sticker Image
 	sticker.i = newNum;
 	console.log(sticker);
 	drawSticker(true);
+	stickerSelectionToggle();
 }
 function drawSticker(drawArc) {
 	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
@@ -198,6 +199,14 @@ function drawEnd() { // Draw The End Canvas
 		eCanvas.getContext("2d").drawImage(eImgNew, stickers[num].x, stickers[num].y, eImgNew.width *  stickers[num].s, eImgNew.height * stickers[num].s);
 //		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
 //		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+	}
+}
+function stickerSelectionToggle() {
+	stickerSelectionOpen = !stickerSelectionOpen;
+	if (stickerSelectionOpen) {
+		document.getElementById("stickerSelection").style.display = "flex";
+	} else {
+		document.getElementById("stickerSelection").style.display = "none";
 	}
 }
 function stepSix() { // Ending Page

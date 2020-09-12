@@ -9,10 +9,10 @@
 	font-size: 1em;
 	font-family: Arial, sans-serif;
 	text-align: center;
+	overflow: hidden;
 }
 .section {
 	display: none;
-	overflow: hidden;
 }
 canvas {
 	margin: 0;
@@ -80,12 +80,26 @@ video {
 	height: 10vh;
 	font-size: 2.5vh;
 }
-#stickerSection button img {
-	height: 9.375vh;
+	/*Sticker Selection Overlay*/
+#stickerSelection {
+	display: none; /*Becomes Flex*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+#stickerSelection button {
+	height: 15vh;
+	flex: 1 1 auto;
+}
+#stickerSelection button img {
+	height: 10vh;
 	background-color: rgba(0,0,0,0);
 }
-	/*Sticker Selection Overlay*/
-#stickerSelection
 
 /*End Section*/
 #endCanvas {
