@@ -13,10 +13,9 @@
 body {
 	background-color: #393;
 	background-image: url("background.png");
-	background-position: right;
+	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: auto 110%;
-
+	background-size: 100vw auto;
 }
 .section {
 	display: none;
@@ -109,6 +108,13 @@ video {
 }
 
 /*End Section*/
+#endSection {
+	background-color: #393;
+	background-image: url("backgroundEnd.png");
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-size: 100vw auto;
+}
 #endCanvas {
 	height: 85vh;
 }
@@ -125,6 +131,11 @@ video {
 
 	/* Landscape Orientation */
 @media (orientation: portrait) {
+	body {
+		background-position: top right;
+		background-repeat: no-repeat;
+		background-size: auto 100vh;
+	}
 	video {
 		width: 100vw;
 		height: auto;
@@ -139,6 +150,11 @@ video {
 		width: 100vw;
 		height: 100vw;
 		margin: calc((85vh - 100vw) / 2) 0;
+	}
+	#endSection {
+		background-position: top right;
+		background-repeat: no-repeat;
+		background-size: auto 100vh;
 	}
 	#endCanvas {
 		width: 100vw;
