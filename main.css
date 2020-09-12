@@ -14,7 +14,7 @@ body {
 	background-image: url("background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: 100vw auto;
+	background-size: 110vw auto;
 }
 .section {
 	display: none;
@@ -56,7 +56,7 @@ button {
 
 /*Video Section*/
 video {
-	height: 90vh;
+	height: 75vh;
 }
 #videoSection button {
 	width: 40vw;
@@ -125,7 +125,7 @@ video {
 	/* Landscape Orientation */
 @media (orientation: portrait) {
 	body {
-		background-size: auto 100vh;
+		background-size: auto 110vh;
 	}
 	canvas {
 		width: 90vw;
