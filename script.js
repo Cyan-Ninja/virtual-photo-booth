@@ -33,9 +33,9 @@ function hideAllSections() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;
+		video.srcObject = videoStream;*/
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -95,26 +95,24 @@ function drawSticker(drawArc) {
 		console.log(stickers[num]);
 		let sImgNew = new Image();
 		sImgNew.src = "stickers/" + stickers[num].i + ".png";
-//		let degrees = stickers[num].d; // Test Degrees
-//		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		sCanvas.getContext("2d").drawImage(sImgNew, stickers[num].x, stickers[num].y, sImgNew.width *  stickers[num].s, sImgNew.height * stickers[num].s);
-//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+		sCanvas.getContext("2d").save(); // Save Canvas To Restore
+		sCanvas.getContext("2d").translate(stickers[num].x + sImgNew.width / 2, stickers[num].y + sImgNew.height / 2); // Set Origin To Image Centre
+		sCanvas.getContext("2d").rotate(stickers[num].d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
+		sCanvas.getContext("2d").drawImage(sImgNew, sImgNew.width / 2 * (-1), sImgNew.height / 2 * (-1), sImgNew.width, sImg.height); // Draw Image
+		sCanvas.getContext("2d").restore(); // Restore Canvas To Normal
 	}
 	if (sticker.i > 0) {
-//		let degrees = sticker.d; // Test Degrees
-//		sCanvas.getContext("2d").setTransform(sticker.s, 0, 0, sticker.s, sticker.x, sticker.y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		sCanvas.getContext("2d").drawImage(sImg, sticker.x, sticker.y, sImg.width * sticker.s, sImg.height * sticker.s);
+		sCanvas.getContext("2d").save(); // Save Canvas To Restore
+		sCanvas.getContext("2d").translate(sticker.x + sImg.width / 2, sticker.y + sImg.height / 2); // Set Origin To Image Centre
+		sCanvas.getContext("2d").rotate(sticker.d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
+		sCanvas.getContext("2d").drawImage(sImg, sImg.width / 2 * (-1), sImg.height / 2 * (-1), sImg.width, sImg.height); // Draw Image
 		if (drawArc) {
 			sCanvas.getContext("2d").beginPath();
-			sCanvas.getContext("2d").arc(sticker.x, sticker.y, 6.9, 0, 2 * Math.PI);
+			sCanvas.getContext("2d").arc(0, 0, 6.9, 0, 2 * Math.PI);
 			sCanvas.getContext("2d").stroke();
 			sCanvas.getContext("2d").closePath();
 		}
-//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+		sCanvas.getContext("2d").restore(); // Restore Canvas To Normal
 	}
 }
 function removeSticker() {

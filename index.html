@@ -29,15 +29,23 @@
 		<div id="stickerSection" class="section">
 			<canvas id="stickerCanvas" width="1080" height="1080"></canvas><br>
 			<div class="flexButtons">
-				<button type="button" name="button" onclick="rechooseFrame();">Back</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d -= 10;if(sticker.d<=-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
+				">&#8634;Rotate</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d += 10;if(sticker.d<=-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
+				">Rotate&#8635;</button>
 				<button type="button" name="button" class="stickerButton" onclick="
 					sticker.s -= 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
 				">Shrink</button>
 				<button type="button" name="button" class="stickerButton" onclick="
 					sticker.s += 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
 				">Grow</button>
-				<button type="button" name="button" onclick="stickerSelectionToggle();">CHOOSE Sticker</button>
+			</div>
+			<div class="flexButtons">
+				<button type="button" name="button" onclick="rechooseFrame();">Back</button>
 				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">REMOVE Last</button>
+				<button type="button" name="button" onclick="stickerSelectionToggle();">CHOOSE Sticker</button>
 				<button type="button" name="button" class="stickerButton" onclick="setSticker();">SET Current</button>
 				<button type="button" name="button" onclick="stepper();">Continue</button>
 			</div>
