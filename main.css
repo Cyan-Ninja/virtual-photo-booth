@@ -14,7 +14,7 @@ body {
 	background-image: url("background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: 110vw auto;
+	background-size: cover;
 }
 .section {
 	display: none;
@@ -125,9 +125,6 @@ video {
 
 	/* Landscape Orientation */
 @media (orientation: portrait) {
-	body {
-		background-size: auto 110vh;
-	}
 	canvas {
 		width: 90vw;
 		height: 90vw;
