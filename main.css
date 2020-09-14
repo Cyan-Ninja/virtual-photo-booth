@@ -10,7 +10,7 @@
 	text-align: center;
 }
 body {
-	background-color: #910c5a;
+	background-color: #830058;
 	background-image: url("background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
@@ -125,6 +125,9 @@ video {
 
 	/* Landscape Orientation */
 @media (orientation: portrait) {
+	body {
+		background-size: auto 100vh;
+	}
 	canvas {
 		width: 90vw;
 		height: 90vw;
