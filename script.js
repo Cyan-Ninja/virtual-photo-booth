@@ -1,4 +1,4 @@
-var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}, eCanvas = document.getElementById("endCanvas"), stickerSelectionOpen = false;
+var step = 0, video = document.getElementById("video"), pCanvas = document.getElementById("pictureCanvas"), fCanvas = document.getElementById("frameCanvas"), frameNum = 0, sCanvas = document.getElementById("stickerCanvas"), stickers = [], sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}, touchableStickersRunOnce = false, eCanvas = document.getElementById("endCanvas"), stickerSelectionOpen = false;
 function stepper() {
 	step++;
 	console.log("Running Step: " + step);
@@ -33,9 +33,9 @@ function hideAllSections() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
+		video.srcObject = videoStream;
 	} else {
 		console.error("No Media Device Navigator!");
 	}
@@ -75,6 +75,10 @@ function stepFour() { // Set Frame
 	setFrame();
 	hideAllSections();
 	document.getElementById("frameSection").style.display = "block";
+}
+function rechooseFrame() {
+	step = 4;
+	stepFour();
 }
 function chooseSticker(newNum) { // Set Sticker Image
 	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
@@ -184,8 +188,11 @@ function touchableStickers() {
 }
 function stepFive() { // Set Stickers
 	sCanvas.getContext("2d").lineWidth = 22.5;
-	drawSticker(false);
-	touchableStickers();
+	drawSticker(true);
+	if (!touchableStickersRunOnce) {
+		touchableStickersRunOnce = true;
+		touchableStickers();
+	}
 	hideAllSections();
 	document.getElementById("stickerSection").style.display = "block";
 }
@@ -211,10 +218,13 @@ function stickerSelectionToggle() {
 		document.getElementById("stickerSelection").style.display = "none";
 	}
 }
+function backToStickers() {
+	step = 5;
+	stepFive();
+}
 function stepSix() { // Ending Page
 	drawEnd();
 	var photoDownload = eCanvas.toDataURL('image/png');
-	console.log("Image Data URL: " + photoDownload);
 	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	hideAllSections();
