@@ -130,6 +130,7 @@ function touchableStickers() {
 	console.warn("TOUCHABLE STICKERS FUNC RUN");
 	var touchObj, touchStartX, touchStartY, xDist, yDist, xDistLast, yDistLast, touchObjTwo, hyp, lastHyp;
 	sCanvas.addEventListener('touchstart', function(e){
+		e.preventDefault();
 		touchObj = e.changedTouches[0]; // Get First Finger Touchpoint
 		touchStartX = parseInt(touchObj.clientX); // The Starting X Coordinate
 		touchStartY = parseInt(touchObj.clientY); // The Starting Y Coordinate
