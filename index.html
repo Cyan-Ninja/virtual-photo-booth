@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 	<body>
-		<button type="button" name="button" id="startStepper" onclick="stepper();">Start<br></button>
+		<button type="button" name="button" id="startStepper" class="section" onclick="stepper();">Start<br></button>
 		<div id="videoSection" class="section">
 			<video autoplay id="video"></video><br>
 			<button type="button" name="button" onclick="stepper();">Snap</button><br>
@@ -20,6 +20,7 @@
 		<div id="frameSection" class="section">
 			<canvas id="frameCanvas" width="1080" height="1080"></canvas><br>
 			<div class="flexButtons">
+				<button type="button" name="button" onclick="retakePicture();">Back</button>
 				<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
 				<button type="button" name="button" class="frameButton" onclick="setFrame(1);">Frame 1</button><br>
 				<button type="button" name="button" onclick="stepper();">Continue</button>
