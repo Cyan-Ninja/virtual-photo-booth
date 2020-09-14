@@ -33,9 +33,9 @@ function hideAllSections() {
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		/*var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
-		video.srcObject = videoStream;*/
+		video.srcObject = videoStream;
 	} else {
 		console.error("No Media Device Navigator!");
 	}
