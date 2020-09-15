@@ -227,12 +227,31 @@ function stepSix() { // Ending Page
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	hideAllSections();
 	document.getElementById("endSection").style.display = "block";
+	var body = document.getElementsByTagName("body")[0], bodyBgImg = body.style.backgroundImage, bodyBgColour = body.style.backgroundColor;
+	if (bodyBgImg == 'url("background.png")') {
+		bodyBgColour = "#bfab39";
+		bodyBgImg == 'url("background2.png")';
+	} else {
+		bodyBgColour = "#890456";
+		bodyBgImg = 'url("background.png")';
+	}
 }
 function stepSeven() { // Reset To The Start To Take Another Picture
 	hideAllSections();
+	var body = document.getElementsByTagName("body")[0], bodyBgImg = body.style.backgroundImage, bodyBgColour = body.style.backgroundColor;
+	if (bodyBgImg == 'url("background.png")') {
+		bodyBgColour = "#bfab39";
+		bodyBgImg == 'url("background2.png")';
+	} else {
+		bodyBgColour = "#890456";
+		bodyBgImg = 'url("background.png")';
+	}
+
+	// Reset Variables
 	frameNum = 0; // Reset Frame To None
 	stickers = []; // Reset To No Set Stickers
 	sticker = {x: 90, y: 90, i: 1, s: 1, d: 0}; // Reset Current Sticker
+
 	// Go Back To Step 2
 	step = 2;
 	stepTwo();

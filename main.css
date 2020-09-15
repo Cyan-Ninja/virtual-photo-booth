@@ -10,11 +10,11 @@
 	text-align: center;
 }
 body {
-	background-color: #830058;
+	background-color: #890456;
 	background-image: url("background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100vw auto;
 }
 .section {
 	display: none;
