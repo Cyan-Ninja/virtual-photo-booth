@@ -30,6 +30,8 @@ function hideAllSections() {
 	for (var i = 0; i < document.getElementsByClassName("section").length; i++) {
 		document.getElementsByClassName("section")[i].style.display = "none";
 	}
+	document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
+	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
 }
 async function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
@@ -227,25 +229,19 @@ function stepSix() { // Ending Page
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	hideAllSections();
 	document.getElementById("endSection").style.display = "block";
-	var body = document.getElementsByTagName("body")[0], bodyBgImg = body.style.backgroundImage, bodyBgColour = body.style.backgroundColor;
-	if (bodyBgImg == 'url("background.png")') {
-		bodyBgColour = "#bfab39";
-		bodyBgImg == 'url("background2.png")';
+	document.getElementsByTagName("body")[0].style.backgroundColor = "#bfab39";
+	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background2.png")';
+	/* Could Be Used If Wanted, But Not
+	if (document.getElementsByTagName("body")[0].style.backgroundColor == 'url("background.png")' || document.getElementsByTagName("body")[0].style.backgroundColor == "") {
+		document.getElementsByTagName("body")[0].style.backgroundColor = "#bfab39";
+		document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background2.png")';
 	} else {
-		bodyBgColour = "#890456";
-		bodyBgImg = 'url("background.png")';
-	}
+		document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
+		document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
+	}*/
 }
 function stepSeven() { // Reset To The Start To Take Another Picture
 	hideAllSections();
-	var body = document.getElementsByTagName("body")[0], bodyBgImg = body.style.backgroundImage, bodyBgColour = body.style.backgroundColor;
-	if (bodyBgImg == 'url("background.png")') {
-		bodyBgColour = "#bfab39";
-		bodyBgImg == 'url("background2.png")';
-	} else {
-		bodyBgColour = "#890456";
-		bodyBgImg = 'url("background.png")';
-	}
 
 	// Reset Variables
 	frameNum = 0; // Reset Frame To None
