@@ -93,12 +93,12 @@ function drawSticker(drawArc) {
 	sImg.src = "stickers/" + sticker.i + ".png";
 	for (var num = 0; num < stickers.length; num++) {
 		console.log(stickers[num]);
-		let sImgNew = new Image();
-		sImgNew.src = "stickers/" + stickers[num].i + ".png";
+		let imgNew = new Image();
+		imgNew.src = "stickers/" + stickers[num].i + ".png";
 		sCanvas.getContext("2d").save(); // Save Canvas To Restore
-		sCanvas.getContext("2d").translate(stickers[num].x + sImgNew.width / 2, stickers[num].y + sImgNew.height / 2); // Set Origin To Image Centre
+		sCanvas.getContext("2d").translate(stickers[num].x + imgNew.width / 2, stickers[num].y + imgNew.height / 2); // Set Origin To Image Centre
 		sCanvas.getContext("2d").rotate(stickers[num].d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
-		sCanvas.getContext("2d").drawImage(sImgNew, sImgNew.width / 2 * (-1), sImgNew.height / 2 * (-1), sImgNew.width * stickers[num].s, sImgNew.height * stickers[num].s); // Draw Image
+		sCanvas.getContext("2d").drawImage(imgNew, imgNew.width / 2 * (-1), imgNew.height / 2 * (-1), imgNew.width * stickers[num].s, imgNew.height * stickers[num].s); // Draw Image
 		sCanvas.getContext("2d").restore(); // Restore Canvas To Normal
 	}
 	if (sticker.i > 0) {
@@ -199,14 +199,13 @@ function drawEnd() { // Draw The End Canvas
 	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
 	for (var num = 0; num < stickers.length; num++) {
 		console.log(stickers[num]);
-		let eImgNew = new Image();
-		eImgNew.src = "stickers/" + stickers[num].i + ".png";
-//		let degrees = stickers[num].d; // Test Degrees
-//		sCanvas.getContext("2d").setTransform(stickers[num].s, 0, 0, stickers[num].s, stickers[num].x, stickers[num].y); // Transform Set To Sticker's Position For Rotation Around Clean Point
-//		sCanvas.getContext("2d").rotate(degrees * Math.PI / 180); // Rotation
-		eCanvas.getContext("2d").drawImage(eImgNew, stickers[num].x, stickers[num].y, eImgNew.width *  stickers[num].s, eImgNew.height * stickers[num].s);
-//		sCanvas.getContext("2d").rotate(-degrees * Math.PI / 180); // Negative Rotation
-//		sCanvas.getContext("2d").setTransform(1, 0, 0, 1, 0, 0); // Reset Transform
+		let imgNew = new Image();
+		imgNew.src = "stickers/" + stickers[num].i + ".png";
+		eCanvas.getContext("2d").save(); // Save Canvas To Restore
+		eCanvas.getContext("2d").translate(stickers[num].x + imgNew.width / 2, stickers[num].y + imgNew.height / 2); // Set Origin To Image Centre
+		eCanvas.getContext("2d").rotate(stickers[num].d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
+		eCanvas.getContext("2d").drawImage(imgNew, imgNew.width / 2 * (-1), imgNew.height / 2 * (-1), imgNew.width * stickers[num].s, imgNew.height * stickers[num].s); // Draw Image
+		eCanvas.getContext("2d").restore(); // Restore Canvas To Normal
 	}
 }
 function stickerSelectionToggle() {
