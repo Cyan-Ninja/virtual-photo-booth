@@ -22,10 +22,10 @@ body {
 canvas {
 	margin: 0;
 	padding: 0;
-	height: 90vh;
+	height: 85vh;
 }
 button {
-	height: 7.5vh;
+	height: 10vh;
 	flex: 1;
 	margin: 0.3125vh 0.625vw;
 	background-color: #ec0;
@@ -33,6 +33,10 @@ button {
 	border-width: 1vw;
 	border-radius: 10vw;
 	font-size: 3.75vh;
+}
+button img {
+	height: 7.5vh;
+	background-color: rgba(0,0,0,0);
 }
 .flexButtons {
 	display: flex;
@@ -74,18 +78,9 @@ video {
 	margin: 0 2.5vw;
 }
 
-/*Frame Section*/
-#frameSection button {
-	width: 40vw;
-}
-
 /*Sticker Section*/
 #stickerCanvas {
 	height: 85vh;
-}
-#stickerSection button {
-	height: 10vh;
-	font-size: 2.5vh;
 }
 	/*Sticker Selection Overlay*/
 #stickerSelection {
@@ -100,12 +95,8 @@ video {
 	flex-wrap: wrap;
 }
 #stickerSelection button {
-	height: 15vh;
-	flex: 1 1 auto;
-}
-#stickerSelection button img {
 	height: 10vh;
-	background-color: rgba(0,0,0,0);
+	flex: 1 1 auto;
 }
 
 /*End Section*/
