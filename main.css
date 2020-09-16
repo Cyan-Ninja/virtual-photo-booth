@@ -146,7 +146,26 @@ video {
 		height: 90vw;
 	}
 }
-
+#fof {
+	width: 100vw;
+	margin: 25vh 0;
+}
+#fof div {
+	width: 75vw;
+	margin: 0 12.5vw;
+	padding: 3.125vh 3.125vw;
+	border-radius: 3.125vh;
+	background-color: #890456;
+}
+#fof h1 {
+	color: #fdceeb;
+}
+#fof p {
+	color: #fee6f5;
+}
+#fof a {
+	color: #df078c;
+}
 	/* Small (>576px) [Landscape Phones] */
 /*@media (min-width: 576px) {
 
