@@ -89,14 +89,18 @@ video {
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
+	background-color: #890456;
+	border-radius: 2.5vh;
 }
 #stickerSelection button {
-	height: 10vh;
+	height: 7.5vh;
 	flex: 1 1 auto;
+}
+#stickerSection img {
+	height: 5vh;
 }
 
 /*End Section*/
