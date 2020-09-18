@@ -33,17 +33,17 @@ function hideAllSections() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
 	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
 }
+
 async function stepOne() { // Get The Camera & Display In Video
-	console.log("Debug...");
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = navigator.mediaDevices.getUserMedia({video: true});
+		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
+		console.log(videoStream);
 		video.srcObject = videoStream;
-		console.log(video);
-		step = 2;
-		stepTwo();
 	} else {
 		console.error("No Media Device Navigator!");
 	}
+	stepTwo();
+	step++;
 }
 function stepTwo() {
 	hideAllSections();
