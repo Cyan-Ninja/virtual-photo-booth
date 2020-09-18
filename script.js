@@ -33,11 +33,11 @@ function hideAllSections() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
 	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
 }
-async function stepOne() { // Get The Camera & Display In Video
+function stepOne() { // Get The Camera & Display In Video
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
-		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
-		console.log(videoStream);
+		var videoStream = navigator.mediaDevices.getUserMedia({video: true});
 		video.srcObject = videoStream;
+		console.log(video);
 		step = 2;
 		stepTwo();
 	} else {
