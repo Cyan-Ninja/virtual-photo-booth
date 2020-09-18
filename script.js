@@ -38,11 +38,11 @@ async function stepOne() { // Get The Camera & Display In Video
 		var videoStream = await navigator.mediaDevices.getUserMedia({video: true});
 		console.log(videoStream);
 		video.srcObject = videoStream;
+		step = 2;
+		stepTwo();
 	} else {
 		console.error("No Media Device Navigator!");
 	}
-	stepTwo();
-	step++;
 }
 function stepTwo() {
 	hideAllSections();
