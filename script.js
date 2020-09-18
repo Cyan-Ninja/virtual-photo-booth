@@ -33,7 +33,8 @@ function hideAllSections() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
 	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
 }
-function stepOne() { // Get The Camera & Display In Video
+async function stepOne() { // Get The Camera & Display In Video
+	console.log("Debug...");
 	if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) { // Check For Media Devices
 		var videoStream = navigator.mediaDevices.getUserMedia({video: true});
 		video.srcObject = videoStream;
