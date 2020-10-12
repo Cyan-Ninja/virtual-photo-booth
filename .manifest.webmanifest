@@ -1,0 +1,47 @@
+{
+	"short_name": "Party Pics",
+	"name": "Party Pics",
+	"description": "A private virtual photo booth.",
+	"icons": [
+		{
+			"src": "/assets/favicons/apple-icon-precomposed.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/assets/favicons/ms-icon-310x310.png",
+			"type": "image/png",
+			"sizes": "310x310"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#ffffff",
+	"display": "browser",
+	"scope": "/",
+	"theme_color": "#ffffff",
+	"dir": "ltr",
+	"lang": "en-GB",
+	"orientation": "any",
+	"shortcuts": [
+		{
+			"name": "Index - Party Pics",
+			"short_name": "Index",
+			"description": "The index/home page.",
+			"url": "/",
+			"icons": [
+				{"src": "/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192"},
+				{"src": "/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310"}
+			]
+		},
+		{
+			"name": "Kai's 3rd Birthday - Party Pics",
+			"short_name": "Kai's 3rd Birthday",
+			"description": "A private virtual photo booth, dinosaur themed for Kai's third birthday party.",
+			"url": "/kais-third-birthday/",
+			"icons": [
+				{"src": "/kais-third-birthday/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable"},
+				{"src": "/kais-third-birthday/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any maskable"}
+			]
+		}
+	]
+}
