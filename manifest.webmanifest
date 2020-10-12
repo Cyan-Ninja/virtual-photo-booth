@@ -26,7 +26,7 @@
 		{
 			"name": "Index - Party Pics",
 			"short_name": "Index",
-			"description": "The index/home page.",
+			"description": "The index/home page of a private virtual photo booth.",
 			"url": "/",
 			"icons": [
 				{"src": "/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192"},
