@@ -1,0 +1,38 @@
+{
+	"short_name": "Party Pics",
+	"name": "Party Pics",
+	"description": "A private virtual photo booth.",
+	"icons": [
+		{
+			"src": "/images/icons-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/images/icons-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#ffffff",
+	"display": "browser",
+	"scope": "/",
+	"theme_color": "#ffffff",
+	"shortcuts": [
+		{
+			"name": "Index - Party Pics",
+			"short_name": "Index",
+			"description": "The index/home page.",
+			"url": "/",
+			"icons": [{ "src": "/images/today.png", "sizes": "192x192" }]
+		},
+		{
+			"name": "Kai's 3rd Birthday - Party Pics",
+			"short_name": "Kai's 3rd Birthday",
+			"description": "A private virtual photo booth, dinosaur themed for Kai's third birthday party.",
+			"url": "/tomorrow?source=pwa",
+			"icons": [{ "src": "/images/tomorrow.png", "sizes": "192x192" }]
+		}
+	]
+}
