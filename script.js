@@ -30,8 +30,8 @@ function hideAllSections() {
 	for (var i = 0; i < document.getElementsByClassName("section").length; i++) {
 		document.getElementsByClassName("section")[i].style.display = "none";
 	}
-	document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
-	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
+	/* Changes Backgrounds Back From Unique Background For End Section (1st Part) */
+	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("assets/backgrounds/background.png")';
 }
 
 async function stepOne() { // Get The Camera & Display In Video
@@ -70,7 +70,7 @@ function setFrame(newFrameNum) { // Choose & Draw Frame/Canvas
 	fCanvas.getContext("2d").drawImage(pCanvas, 0, 0);
 	if (frameNum > 0) {
 		var fImg = new Image();
-		fImg.src = "frames/" + frameNum + ".png";
+		fImg.src = "assets/frames/" + frameNum + ".png";
 		fCanvas.getContext("2d").drawImage(fImg, 0, 0, fCanvas.width, fCanvas.height);
 	}
 }
@@ -93,11 +93,11 @@ function chooseSticker(newNum) { // Set Sticker Image
 function drawSticker(drawArc) {
 	sCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
 	var sImg = new Image();
-	sImg.src = "stickers/" + sticker.i + ".png";
+	sImg.src = "assets/stickers/" + sticker.i + ".png";
 	for (var num = 0; num < stickers.length; num++) {
 		console.log(stickers[num]);
 		let imgNew = new Image();
-		imgNew.src = "stickers/" + stickers[num].i + ".png";
+		imgNew.src = "assets/stickers/" + stickers[num].i + ".png";
 		sCanvas.getContext("2d").save(); // Save Canvas To Restore
 		sCanvas.getContext("2d").translate(stickers[num].x + imgNew.width / 2, stickers[num].y + imgNew.height / 2); // Set Origin To Image Centre
 		sCanvas.getContext("2d").rotate(stickers[num].d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
@@ -203,7 +203,7 @@ function drawEnd() { // Draw The End Canvas
 	for (var num = 0; num < stickers.length; num++) {
 		console.log(stickers[num]);
 		let imgNew = new Image();
-		imgNew.src = "stickers/" + stickers[num].i + ".png";
+		imgNew.src = "assets/stickers/" + stickers[num].i + ".png";
 		eCanvas.getContext("2d").save(); // Save Canvas To Restore
 		eCanvas.getContext("2d").translate(stickers[num].x + imgNew.width / 2, stickers[num].y + imgNew.height / 2); // Set Origin To Image Centre
 		eCanvas.getContext("2d").rotate(stickers[num].d * Math.PI / 360); // Rotate Canvas Around Origin (Degrees To Radians)
@@ -230,16 +230,8 @@ function stepSix() { // Ending Page
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	hideAllSections();
 	document.getElementById("endSection").style.display = "block";
-	document.getElementsByTagName("body")[0].style.backgroundColor = "#bfab39";
-	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background2.png")';
-	/* Could Be Used If Wanted, But Not
-	if (document.getElementsByTagName("body")[0].style.backgroundColor == 'url("background.png")' || document.getElementsByTagName("body")[0].style.backgroundColor == "") {
-		document.getElementsByTagName("body")[0].style.backgroundColor = "#bfab39";
-		document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background2.png")';
-	} else {
-		document.getElementsByTagName("body")[0].style.backgroundColor = "#890456";
-		document.getElementsByTagName("body")[0].style.backgroundImage = 'url("background.png")';
-	}*/
+	/* Changes Background To Unique Background For End Section (1st Part) */
+	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("assets/backgrounds/background2.png")';
 }
 function stepSeven() { // Reset To The Start To Take Another Picture
 	hideAllSections();

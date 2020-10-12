@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+		<title>Virtual Photo Booth</title>
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<!-- Favicon Links/Metas-->
+		<link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#890456">
+		<meta name="msapplication-TileImage" content="assets/favicons/ms-icon-144x144.png">
+		<meta name="theme-color" content="#890456">
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+	<body>
+		<button type="button" name="button" id="startStepper" class="section" onclick="stepper();">Start<br></button>
+		<div id="videoSection" class="section">
+			<video autoplay id="video"></video><br>
+			<button type="button" name="button" onclick="stepper();">Snap</button><br>
+			<p>Note: Picture will be square when taken.</p><br>
+		</div>
+		<div id="pictureSection" class="section">
+			<canvas id="pictureCanvas" width="1080" height="1080"></canvas><br>
+			<button type="button" name="button" onclick="retakePicture();">Back</button><button type="button" name="button" onclick="stepper();">Continue</button><br>
+		</div>
+		<div id="frameSection" class="section">
+			<canvas id="frameCanvas" width="1080" height="1080"></canvas><br>
+			<div class="flexButtons">
+				<button type="button" name="button" onclick="retakePicture();">Back</button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(0);">No Frame</button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(1);"><img src="assets/frames/1.png" /></button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(2);"><img src="assets/frames/2.png" /></button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(3);"><img src="assets/frames/3.png" /></button>
+				<button type="button" name="button" class="frameButton" onclick="setFrame(4);"><img src="assets/frames/4.png" /></button><br>
+				<button type="button" name="button" onclick="stepper();">Continue</button>
+			</div>
+		</div>
+		<div id="stickerSection" class="section">
+			<canvas id="stickerCanvas" width="1080" height="1080"></canvas><br>
+			<div class="flexButtons">
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d -= 10;if(sticker.d<=-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
+				">&#8634;Rotate</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.d += 10;if(sticker.d<=-360){sticker.d=0;}else if(sticker.d>=360){sticker.d=0;}drawSticker(true);
+				">Rotate&#8635;</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.s -= 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
+				">Shrink</button>
+				<button type="button" name="button" class="stickerButton" onclick="
+					sticker.s += 0.05;if(sticker.s<0){sticker.s=0;}else if(sticker.s>1){sticker.s=1;}drawSticker(true);
+				">Grow</button>
+				<button type="button" name="button" onclick="rechooseFrame();">Back</button>
+				<button type="button" name="button" class="stickerButton" onclick="removeSticker();">REMOVE Last</button>
+				<button type="button" name="button" onclick="stickerSelectionToggle();">CHOOSE Sticker</button>
+				<button type="button" name="button" class="stickerButton" onclick="setSticker();">SET Current</button>
+				<button type="button" name="button" onclick="stepper();">Continue</button>
+			</div>
+			<div id="stickerSelection">
+				<!-- Dinosaur Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(1);"><img src="assets/stickers/1.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(2);"><img src="assets/stickers/2.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(3);"><img src="assets/stickers/3.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(18);"><img src="assets/stickers/18.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(19);"><img src="assets/stickers/19.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(20);"><img src="assets/stickers/20.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(21);"><img src="assets/stickers/21.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(22);"><img src="assets/stickers/22.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(23);"><img src="assets/stickers/23.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(24);"><img src="assets/stickers/24.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(25);"><img src="assets/stickers/25.png" /></button>
+				<!-- Party Hat Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(26);"><img src="assets/stickers/26.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(27);"><img src="assets/stickers/27.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(28);"><img src="assets/stickers/28.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(29);"><img src="assets/stickers/29.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(30);"><img src="assets/stickers/30.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(31);"><img src="assets/stickers/31.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(32);"><img src="assets/stickers/32.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(33);"><img src="assets/stickers/33.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(34);"><img src="assets/stickers/34.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(35);"><img src="assets/stickers/35.png" /></button>
+				<!-- Extra (1) -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(36);"><img src="assets/stickers/36.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(37);"><img src="assets/stickers/37.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(38);"><img src="assets/stickers/38.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(39);"><img src="assets/stickers/39.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(40);"><img src="assets/stickers/40.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(41);"><img src="assets/stickers/41.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(42);"><img src="assets/stickers/42.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(43);"><img src="assets/stickers/43.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(44);"><img src="assets/stickers/44.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(45);"><img src="assets/stickers/45.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(46);"><img src="assets/stickers/46.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(47);"><img src="assets/stickers/47.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(48);"><img src="assets/stickers/48.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(49);"><img src="assets/stickers/49.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(50);"><img src="assets/stickers/50.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(51);"><img src="assets/stickers/51.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(52);"><img src="assets/stickers/52.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(53);"><img src="assets/stickers/53.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(54);"><img src="assets/stickers/54.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(55);"><img src="assets/stickers/55.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(56);"><img src="assets/stickers/56.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(57);"><img src="assets/stickers/57.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(58);"><img src="assets/stickers/58.png" /></button>
+				<!-- Cool Sunglasses Stickers -->
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(4);"><img src="assets/stickers/4.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(5);"><img src="assets/stickers/5.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(6);"><img src="assets/stickers/6.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(7);"><img src="assets/stickers/7.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(8);"><img src="assets/stickers/8.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(9);"><img src="assets/stickers/9.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(10);"><img src="assets/stickers/10.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(11);"><img src="assets/stickers/11.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(12);"><img src="assets/stickers/12.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(13);"><img src="assets/stickers/13.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(14);"><img src="assets/stickers/14.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(15);"><img src="assets/stickers/15.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(16);"><img src="assets/stickers/16.png" /></button>
+				<button type="button" name="button" class="stickerButton" onclick="chooseSticker(17);"><img src="assets/stickers/17.png" /></button>
+			</div>
+		</div>
+		<div id="endSection" class="section">
+			<canvas id="endCanvas" width="1080" height="1080"></canvas><br>
+			<div class="flexButtons">
+				<button type="button" name="button" onclick="backToStickers();">Back</button>
+				<button type="button" name="button"><a href="" download="Virtual Photo Booth.png" class="download" id="photoDownload">Download .PNG</a></button>
+				<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+				<div id="photoDrive" class="g-savetodrive" data-src="" data-filename="Party Pics.png" data-sitename="Party Pics"></div>
+				<button type="button" name="button" onclick="stepper();">Take Another</button>
+			</div>
+		</div>
+		<script src="/script.js" charset="utf-8" type="text/javascript"></script>
+	</body>
+</html>
