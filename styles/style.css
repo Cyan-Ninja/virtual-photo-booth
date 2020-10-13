@@ -1,23 +1,25 @@
 /* Main Styles */
-/* Colour Palette: #001 (Text), #136 (Dark), #259 (Light), #eef (Background), & #cdf (Coloured Background); */
+/* Colour Palette: #001 (Text), #136 (Dark), #259 (Light), #ddf (Background), & #cdf (Coloured Background); */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	color: #001;
-	font-size: 1rem;
-	font-family: Arial, sans-serif;
-	text-align: center;
 }
 body {
-	background-color: #eef;
+	background-color: #ddf;
+	font-family: Arial, sans-serif;
+	text-align: left;
+	font-size: 1rem;
+	color: #001;
 }
+/*Top-Header Section*/
 header {
-	margin: 0 12.5vw;
+	margin: 0 auto;
 	width: 75vw;
+	text-align: center;
 }
 header h1 {
-	margin: 2.5vh 0vw;
+	margin: 2.5vh 0;
 	padding: 1.25vh;
 	height: 7.5vh;
 	background-color: #abf;
@@ -26,11 +28,57 @@ header h1 {
 }
 header a {
 	text-decoration: underline;
-	background-color: #def;
+	background-color: #bbf;
 	padding: 0.125vw;
 	border-radius: 0.5vw;
+	color: #001;
 }
 header ol li {
 	margin-left: 2.5vw;
 	text-align: left;
 }
+/*Theme Links Section*/
+#themes article {
+	margin: 4vh auto;
+	padding: 2vh;
+	width: 62.5vw;
+	background-color: #136;
+	border-radius: 4vh;
+	color: #eef;
+}
+#themes article a {
+	padding: 0.5vh;
+	background-color: #248;
+	border-radius: 0.75vh;
+	text-decoration: underline;
+	color: #cdf;
+}
+ /* Unique Themes */
+/* Halloween 2020 */
+#halloweenTwentyTwenty {
+	background-color: #e62 !important;
+	color: #110 !important;
+}
+#halloweenTwentyTwenty a {
+	background-color: #309 !important;
+	color: #eef !important;
+}
+/* Kai's 3rd Birthday */
+#kaisThirdBirthdayTheme {
+	background-color: #890456 !important;
+	color: #eee !important;
+}
+#kaisThirdBirthdayTheme a {
+	background-color: #ec0 !important;
+	color: #111 !important;
+}
+/* Default Template *//*
+#myTheme {
+	background-color: #ffffff !important;
+	color: #000000 !important;
+}
+#myTheme a {
+	background-color: #eeeeee !important;
+	color: #111111 !important;
+}
+*/
