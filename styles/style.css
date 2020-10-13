@@ -1,22 +1,36 @@
 /* Main Styles */
-/* Colour Palette: #001 (Text), #136 (Dark), #259 (Light), #eef (Background), #049 (Text 2nd), #37c (2nd), & #59f (Background 2nd); */
+/* Colour Palette: #001 (Text), #136 (Dark), #259 (Light), #eef (Background), & #cdf (Coloured Background); */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	color: #001;
-	font-size: 1em;
+	font-size: 1rem;
 	font-family: Arial, sans-serif;
 	text-align: center;
 }
 body {
 	background-color: #eef;
 }
-
-a {
-	color: #047;
-	text-decoration: underline;
+header {
+	margin: 0 12.5vw;
+	width: 75vw;
+}
+header h1 {
+	margin: 2.5vh 0vw;
+	padding: 1.25vh;
+	height: 7.5vh;
 	background-color: #abf;
+	border-radius: 1.25vw;
+	font-size: 5vh;
+}
+header a {
+	text-decoration: underline;
+	background-color: #def;
 	padding: 0.125vw;
 	border-radius: 0.5vw;
+}
+header ol li {
+	margin-left: 2.5vw;
+	text-align: left;
 }
