@@ -1,0 +1,14 @@
+/* Main Styles */
+/* Colour Palette: #001 (Text), #136 (Dark- Coloured), #259 (Light- Coloured), #eef (Background/White-ish), & #37c (Abstract); */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #001;
+	font-size: 1em;
+	font-family: Arial, sans-serif;
+	text-align: center;
+}
+body {
+	background-color: #eef;
+}

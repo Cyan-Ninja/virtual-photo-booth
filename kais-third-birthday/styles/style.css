@@ -1,5 +1,4 @@
-/* Main (And Only) Stylesheet */
-	/* Extra Small (<576px) [Portrait Phones] */
+/* App-Only (Unique) Styles */
 * {
 	margin: 0;
 	padding: 0;
@@ -11,7 +10,7 @@
 }
 body {
 	background-color: #890456;
-	background-image: url("assets/backgrounds/background.png");
+	background-image: url("../assets/backgrounds/background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
 	background-size: 100vw auto;
@@ -116,37 +115,4 @@ video {
 	width: 33.333vw;
 	height: 10vh;
 	font-size: 3.75vh;
-}
-
-	/* Landscape Orientation */
-@media (orientation: portrait) {
-	body {
-		background-size: auto 100vh;
-	}
-	canvas {
-		width: 90vw;
-		height: 90vw;
-	}
-	/*Start Section*/
-	#startStepper {
-		width: 20vh;
-		height: 20vh;
-		margin: 2.5vh;
-		background-color: #ec0;
-		border-color: #ca0;
-		border-width: 1.5625vh;
-		border-radius: 10vh;
-		font-size: 6.25vh;
-		float: left;
-	}
-	/*Sticker Section*/
-	#stickerCanvas {
-		width: 90vw;
-		height: 90vw;
-	}
-	/*End Section*/
-	#endCanvas {
-		width: 90vw;
-		height: 90vw;
-	}
 }

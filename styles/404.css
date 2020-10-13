@@ -1,15 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	color: #111;
-	font-size: 1em;
-	font-family: Arial, sans-serif;
-	text-align: center;
-}
-body {
-	background-color: #44022b;
-}
 /* 404 Error Page Styles */
 #fof {
 	width: 100vw;
