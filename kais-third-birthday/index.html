@@ -42,7 +42,9 @@
 		<meta name=viewport content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-		<button type="button" name="button" id="startStepper" class="section" onclick="stepper();">Start<br></button>
+		<div id="startSection" class="section">
+			<button type="button" name="button" id="startStepper" class="section" onclick="stepper();">Start</button><button type="button" name="button" id="startReminder" disabled>(Don't forget to give to <a href="mailto:diana.bond@gmail.com">Diana Bond</a>!)</button>
+		</div>
 		<div id="videoSection" class="section">
 			<video autoplay id="video"></video><br>
 			<button type="button" name="button" onclick="stepper();">Snap</button><br>
