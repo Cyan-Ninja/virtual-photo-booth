@@ -1,21 +1,18 @@
 /* 404 Error Page Styles */
-#fof {
-	width: 100vw;
-	margin: 25vh 0;
-}
-#fof div {
+header {
+	width: 66.666vw;
+	margin: 33.333vh 12.5vw;
 	width: 75vw;
-	margin: 0 12.5vw;
-	padding: 3.125vh 3.125vw;
-	border-radius: 3.125vh;
-	background-color: #890456;
+	font-size: 10vh;
 }
-#fof h1 {
-	color: #fdceeb;
+span {
+	padding: 0.25vw;
+	font-size: 0.9rem;
+	background-color: #abf;
+	border-radius: 1.25vw;
 }
-#fof p {
-	color: #fee6f5;
-}
-#fof a {
-	color: #df078c;
+span a {
+	padding: 0;
+	background-color: #abf;
+	font-size: 0.9rem;
 }
