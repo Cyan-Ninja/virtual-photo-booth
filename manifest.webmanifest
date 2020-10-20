@@ -1,18 +1,10 @@
 {
 	"short_name": "Party Pics",
 	"name": "Party Pics",
-	"description": "A private virtual photo booth.",
+	"description": "Party Pics! A private virtual photo booth with various themes.",
 	"icons": [
-		{
-			"src": "/assets/favicons/apple-icon-precomposed.png",
-			"type": "image/png",
-			"sizes": "192x192"
-		},
-		{
-			"src": "/assets/favicons/ms-icon-310x310.png",
-			"type": "image/png",
-			"sizes": "310x310"
-		}
+		{"src": "/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any"},
+		{"src": "/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any"}
 	],
 	"start_url": "/",
 	"background_color": "#ffffff",
@@ -24,23 +16,33 @@
 	"orientation": "any",
 	"shortcuts": [
 		{
-			"name": "Index - Party Pics",
+			"name": "Index",
 			"short_name": "Index",
-			"description": "The index/home page of a private virtual photo booth.",
+			"description": "The index/home page to find all themes.",
 			"url": "/",
 			"icons": [
-				{"src": "/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192"},
-				{"src": "/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310"}
+				{"src": "/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any"},
+				{"src": "/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any"}
 			]
 		},
 		{
-			"name": "Kai's 3rd Birthday - Party Pics",
+			"name": "Kai's Third Birthday Party",
 			"short_name": "Kai's 3rd Birthday",
-			"description": "A private virtual photo booth, dinosaur themed for Kai's third birthday party.",
-			"url": "/kais-third-birthday/",
+			"description": "It's party time and you're invited! - Dinosaur theme for Kai's third birthday party.",
+			"url": "/kais-third-birthday",
 			"icons": [
 				{"src": "/kais-third-birthday/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable"},
 				{"src": "/kais-third-birthday/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any maskable"}
+			]
+		},
+		{
+			"name": "Halloween 2020",
+			"short_name": "Halloween",
+			"description": "Get ready to spook for Halloween! - Spooky Halloween theme for 2020.",
+			"url": "/halloween-twenty-twenty",
+			"icons": [
+				{"src": "/halloween-twenty-twenty/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any"},
+				{"src": "/halloween-twenty-twenty/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any"}
 			]
 		}
 	]
