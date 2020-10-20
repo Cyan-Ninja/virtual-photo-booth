@@ -1,0 +1,135 @@
+/* App-Only (Unique) Styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #111;
+	font-size: 1em;
+	font-family: Arial, sans-serif;
+	text-align: center;
+}
+body {
+	background-color: #890456;
+	background-image: url("../assets/backgrounds/background.png");
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-size: 100vw auto;
+}
+.section {
+	display: none;
+}
+canvas {
+	margin: 0;
+	padding: 0;
+	height: 85vh;
+}
+button {
+	height: 10vh;
+	flex: 1;
+	margin: 0.3125vh 0.625vw;
+	background-color: #ec0;
+	border-color: #ca0;
+	border-width: 1vw;
+	border-radius: 10vw;
+	font-size: 3.75vh;
+}
+button img {
+	height: 7.5vh;
+	background-color: rgba(0,0,0,0);
+}
+.flexButtons {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+/*Start Section*/
+#startSection {
+	display: block;
+}
+#startSection button {
+	margin: 2.5vw;
+	background-color: #ec0;
+	border-color: #ca0;
+	float: left;
+	display: block;
+}
+#startStepper {
+	width: 20vw;
+	height: 20vw;
+	border-width: 1.5vw;
+	border-radius: 10vw;
+	font-size: 5vw;
+}
+#startReminder {
+	width: 70vw;
+	margin-top: 7.5vw !important;
+	background-color: #ec0;
+	border-color: #ca0;
+	border-width: 1vw;
+	border-radius: 10vw;
+	font-size: 3.5vh;
+}
+#startReminder a {
+	text-decoration: underline overline;
+}
+
+/*Video Section*/
+video {
+	height: 75vh;
+}
+#videoSection button {
+	width: 40vw;
+}
+#videoSection p {
+	width: 100vw;
+	height: 2.5vh;
+	font-size: 2.5vh;
+}
+
+/*Picture Section*/
+#pictureSection button {
+	width: 40vw;
+	margin: 0 2.5vw;
+}
+
+/*Sticker Section*/
+#stickerCanvas {
+	height: 85vh;
+}
+	/*Sticker Selection Overlay*/
+#stickerSelection {
+	display: none; /*Becomes Flex*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #890456;
+	border-radius: 2.5vh;
+}
+#stickerSelection button {
+	height: 7.5vh;
+	flex: 1 1 auto;
+}
+#stickerSection img {
+	height: 5vh;
+}
+
+/*End Section*/
+#endCanvas {
+	height: 85vh;
+}
+#photoDownload {
+	width: 100vw;
+	height: 6.25vh;
+	font-size: 3.125vh;
+}
+#endSection button {
+	width: 33.333vw;
+	height: 10vh;
+	font-size: 3.75vh;
+}
