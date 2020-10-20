@@ -7,10 +7,10 @@
 		{"src": "/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any"}
 	],
 	"start_url": "/",
-	"background_color": "#ffffff",
 	"display": "browser",
 	"scope": "/",
-	"theme_color": "#ffffff",
+	"theme_color": "#abf",
+	"background_color": "#ddf",
 	"dir": "ltr",
 	"lang": "en-GB",
 	"orientation": "any",
