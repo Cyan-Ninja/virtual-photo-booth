@@ -9,11 +9,17 @@
 	text-align: center;
 }
 body {
-	background-color: #890456;
-	background-image: url("../assets/backgrounds/background-landscape.png");
+	background-color: #290059;
+	background-image: url("../assets/backgrounds/background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
 	background-size: auto 100vh;
+}
+@media (orientation: landscape) {
+	body {
+		background-image: url("../assets/backgrounds/background-landscape.png");
+		background-size: 100vw auto;
+	}
 }
 .section {
 	display: none;
@@ -27,8 +33,8 @@ button {
 	height: 10vh;
 	flex: 1;
 	margin: 0.3125vh 0.625vw;
-	background-color: #ec0;
-	border-color: #ca0;
+	background-color: #ffc500;
+	border-color: #dda300;
 	border-width: 1vw;
 	border-radius: 10vw;
 	font-size: 3.75vh;
@@ -50,8 +56,8 @@ button img {
 }
 #startSection button {
 	margin: 2.5vw;
-	background-color: #ec0;
-	border-color: #ca0;
+	background-color: #ffc500;
+	border-color: #dda300;
 	float: left;
 	display: block;
 }
@@ -65,8 +71,8 @@ button img {
 #startReminder {
 	width: 70vw;
 	margin-top: 7.5vw !important;
-	background-color: #ec0;
-	border-color: #ca0;
+	background-color: #ffc500;
+	border-color: #dda300;
 	border-width: 1vw;
 	border-radius: 10vw;
 	font-size: 3.5vh;
@@ -108,7 +114,6 @@ video {
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
-	background-color: #890456;
 	border-radius: 2.5vh;
 }
 #stickerSelection button {

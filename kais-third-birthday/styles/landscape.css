@@ -1,8 +1,5 @@
 /* App-Only (Unique) Landscape Styles */
 @media (orientation: landscape) {
-	body {
-		background-size: 100vw auto;
-	}
 	canvas {
 		width: 90vw;
 		height: 90vw;
@@ -12,8 +9,6 @@
 		width: 20vh;
 		height: 20vh;
 		margin: 2.5vh;
-		background-color: #ec0;
-		border-color: #ca0;
 		border-width: 1.5625vh;
 		border-radius: 10vh;
 		font-size: 6.25vh;

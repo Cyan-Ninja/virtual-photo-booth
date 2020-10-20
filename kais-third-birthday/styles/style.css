@@ -13,7 +13,12 @@ body {
 	background-image: url("../assets/backgrounds/background.png");
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: 100vw auto;
+	background-size: auto 100vh;
+}
+@media (orientation: landscape) {
+	body {
+		background-size: 100vw auto;
+	}
 }
 .section {
 	display: none;
@@ -108,7 +113,6 @@ video {
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
-	background-color: #890456;
 	border-radius: 2.5vh;
 }
 #stickerSelection button {
