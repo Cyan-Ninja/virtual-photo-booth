@@ -10,10 +10,10 @@
 }
 body {
 	background-color: #890456;
-	background-image: url("../assets/backgrounds/background.png");
+	background-image: url("../assets/backgrounds/background-landscape.png");
 	background-position: top right;
 	background-repeat: no-repeat;
-	background-size: 100vw auto;
+	background-size: auto 100vh;
 }
 .section {
 	display: none;
