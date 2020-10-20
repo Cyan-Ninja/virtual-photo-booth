@@ -30,8 +30,6 @@ function hideAllSections() {
 	for (var i = 0; i < document.getElementsByClassName("section").length; i++) {
 		document.getElementsByClassName("section")[i].style.display = "none";
 	}
-	/* Changes Backgrounds Back From Unique Background For End Section (1st Part) */
-	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("assets/backgrounds/background.png")';
 }
 
 async function stepOne() { // Get The Camera & Display In Video
@@ -197,6 +195,7 @@ function stepFive() { // Set Stickers
 	}
 	hideAllSections();
 	document.getElementById("stickerSection").style.display = "block";
+	stickerSelectionToggle()
 }
 function drawEnd() { // Draw The End Canvas
 	eCanvas.getContext("2d").drawImage(fCanvas, 0, 0);
@@ -224,6 +223,7 @@ function backToStickers() {
 	stepFive();
 }
 function stepSix() { // Ending Page
+	stickerSelectionToggle()
 	drawEnd();
 	var photoDownload = eCanvas.toDataURL('image/png');
 	document.getElementById("photoDownload").href = photoDownload.replace(/^data:image\/[^;]/, 'data:application/octet-stream'); // Set The Download
