@@ -230,8 +230,6 @@ function stepSix() { // Ending Page
 	document.getElementById("photoDownload").href = photoDownload; // Set The Google Drive Save Source
 	hideAllSections();
 	document.getElementById("endSection").style.display = "block";
-	/* Changes Background To Unique Background For End Section (1st Part) */
-	document.getElementsByTagName("body")[0].style.backgroundImage = 'url("assets/backgrounds/background2.png")';
 }
 function stepSeven() { // Reset To The Start To Take Another Picture
 	hideAllSections();
