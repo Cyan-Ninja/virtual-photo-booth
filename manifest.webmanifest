@@ -41,8 +41,8 @@
 			"description": "Get ready to spook for Halloween! - Spooky Halloween theme for 2020.",
 			"url": "/halloween-twenty-twenty",
 			"icons": [
-				{"src": "/halloween-twenty-twenty/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any"},
-				{"src": "/halloween-twenty-twenty/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any"}
+				{"src": "/halloween-twenty-twenty/assets/favicons/apple-icon-precomposed.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable"},
+				{"src": "/halloween-twenty-twenty/assets/favicons/ms-icon-310x310.png", "type": "image/png", "sizes": "310x310", "purpose": "any maskable"}
 			]
 		}
 	]
