@@ -17,7 +17,6 @@ body {
 }
 @media (orientation: landscape) {
 	body {
-		background-image: url("../assets/backgrounds/background-landscape.png");
 		background-size: 100vw auto;
 	}
 }
@@ -117,11 +116,11 @@ video {
 	border-radius: 2.5vh;
 }
 #stickerSelection button {
-	height: 7.5vh;
+	height: 15vh;
 	flex: 1 1 auto;
 }
 #stickerSection img {
-	height: 5vh;
+	height: 7.5vh;
 }
 
 /*End Section*/
@@ -135,6 +134,12 @@ video {
 }
 #endSection button {
 	width: 33.333vw;
-	height: 10vh;
-	font-size: 3.75vh;
+	height: 7.5vh;
+	font-size: 3vh;
+}
+#endReminder {
+	width: 90vw !important;
+	height: auto !important;
+	border-radius: 0.25vh !important;
+	font-size: 1rem !important;
 }

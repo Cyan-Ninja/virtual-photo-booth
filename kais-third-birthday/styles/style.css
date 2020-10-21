@@ -134,6 +134,12 @@ video {
 }
 #endSection button {
 	width: 33.333vw;
-	height: 10vh;
-	font-size: 3.75vh;
+	height: 7.5vh;
+	font-size: 3vh;
+}
+#endReminder {
+	width: 90vw !important;
+	height: auto !important;
+	border-radius: 0.25vh !important;
+	font-size: 1rem !important;
 }
