@@ -37,6 +37,36 @@ header ol li {
 	margin-left: 2.5vw;
 	text-align: left;
 }
+/*Tutorial Section*/
+#tutorial {
+	padding: 1vw;
+	width: 100vw;
+	text-align: center;
+}
+	/*XS*/
+#tutorial img {
+	padding: 0.125vh auto;
+	width: auto;
+	max-width: 90vw;
+}
+	/*S*/
+@media (min-width: 600px) {
+	#tutorial img {
+		max-width: 45vw;
+	}
+}
+	/*M*/
+@media (min-width: 800px) {
+	#tutorial img {
+		max-width: 30vw;
+	}
+}
+	/*L*/
+@media (min-width: 1000px) {
+	#tutorial img {
+		max-width: 15vw;
+	}
+}
 /*Theme Links Section*/
 #themes article {
 	margin: 4vh auto;
@@ -53,7 +83,7 @@ header ol li {
 	text-decoration: underline;
 	color: #cdf;
 }
- /* Unique Themes */
+	/* Unique Themes */
 /* Halloween 2020 */
 #halloweenTwentyTwenty {
 	background-color: #df4f10 !important;
