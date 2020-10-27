@@ -152,6 +152,9 @@ video {
 		width: 90vw;
 		height: 90vw;
 	}
+	#stickerSelection button {
+		height: 10vh;
+	}
 	/*End Section*/
 	#endCanvas {
 		width: 90vw;
