@@ -131,3 +131,30 @@ video {
 	border-radius: 0.25vh !important;
 	font-size: 1rem !important;
 }
+
+@media (orientation: portrait) {
+	canvas {
+		width: 90vw;
+		height: 90vw;
+	}
+	/*Start Section*/
+	#startStepper {
+		width: 20vh;
+		height: 20vh;
+		margin: 2.5vh;
+		border-width: 1.5625vh;
+		border-radius: 10vh;
+		font-size: 6.25vh;
+		float: left;
+	}
+	/*Sticker Section*/
+	#stickerCanvas {
+		width: 90vw;
+		height: 90vw;
+	}
+	/*End Section*/
+	#endCanvas {
+		width: 90vw;
+		height: 90vw;
+	}
+}
