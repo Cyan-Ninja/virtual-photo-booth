@@ -137,6 +137,10 @@ video {
 		width: 90vw;
 		height: 90vw;
 	}
+	/*Video Section*/
+	video {
+		width: 100vw;;
+	}
 	/*Start Section*/
 	#startStepper {
 		width: 20vh;
