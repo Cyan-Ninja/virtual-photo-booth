@@ -67,18 +67,6 @@ button img {
 	border-radius: 10vw;
 	font-size: 5vw;
 }
-#startReminder {
-	width: 70vw;
-	margin-top: 7.5vw !important;
-	background-color: #ec0;
-	border-color: #ca0;
-	border-width: 1vw;
-	border-radius: 10vw;
-	font-size: 3.5vh;
-}
-#startReminder a {
-	text-decoration: underline overline;
-}
 
 /*Video Section*/
 video {
