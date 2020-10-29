@@ -15,16 +15,25 @@ body {
 /*Top-Header Section*/
 header {
 	margin: 0 auto;
-	width: 75vw;
+	width: 100vw;
 	text-align: center;
 }
 header h1 {
 	margin: 2.5vh 0;
 	padding: 1.25vh;
-	height: 7.5vh;
 	background-color: #abf;
 	border-radius: 1.25vw;
-	font-size: 5vh;
+	font-size: 2rem;
+}
+@media (min-width: 600px) {
+	header {
+		width: 75vw;
+	}
+}
+@media (min-width: 1200px) {
+	header {
+		width: 66.666vw;
+	}
 }
 header a {
 	text-decoration: underline;
