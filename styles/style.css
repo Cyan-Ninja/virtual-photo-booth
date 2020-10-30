@@ -6,41 +6,53 @@
 	box-sizing: border-box;
 }
 body {
-	background-color: #ddf;
+	background-color: #efefee;
 	font-family: Arial, sans-serif;
 	text-align: left;
 	font-size: 1rem;
-	color: #001;
+	color: #000;
+	box-sizing: border-box;
 }
 /*Top-Header Section*/
+picture img {
+	width: 100%;
+	max-width: 100vw;
+}
 header {
-	margin: 0 auto;
 	width: 100vw;
+	margin: 1vh 0;
+	padding: 1.25vh;
+	border-radius: 1.25vw;
+	border-style: double;
+	border-width: 10px;
+	border-color: #f6b75d;
+	font-size: 1rem;
 	text-align: center;
 }
-header h1 {
-	margin: 2.5vh 0;
-	padding: 1.25vh;
-	background-color: #abf;
-	border-radius: 1.25vw;
-	font-size: 2rem;
-}
-@media (min-width: 600px) {
+@media (min-width: 400px) {
 	header {
+		margin: 1vh 2.5vw;
+		width: 95vw;
+	}
+}
+@media (min-width: 800px) {
+	header {
+		margin: 1vh 12.5vw;
 		width: 75vw;
 	}
 }
 @media (min-width: 1200px) {
 	header {
+		margin: 1vh 16.666vw;
 		width: 66.666vw;
 	}
 }
 header a {
 	text-decoration: underline;
-	background-color: #bbf;
+	background-color: #f6b75d;
 	padding: 0.125vw;
 	border-radius: 0.5vw;
-	color: #001;
+	color: #000;
 }
 header ol li {
 	margin-left: 2.5vw;
@@ -48,8 +60,13 @@ header ol li {
 }
 /*Tutorial Section*/
 #tutorial {
+	margin: 0 2vw;
 	padding: 1vw;
-	width: 100vw;
+	width: 95vw;
+	border-radius: 0.5vh;
+	border-style: dotted;
+	border-width: 2.5px;
+	border-color: #f6b75d;
 	text-align: center;
 }
 	/*XS*/
@@ -77,18 +94,35 @@ header ol li {
 	}
 }
 /*Theme Links Section*/
+#themes {
+	margin: 0 2.5vw;
+	width: 95vw;
+	display: flex;
+	flex-wrap: wrap;
+}
 #themes article {
-	margin: 4vh auto;
-	padding: 2vh;
-	width: 62.5vw;
+	margin: 0.5vw;
+	padding: 2vw;
+	width: 95vw;
 	background-color: #136;
 	border-radius: 4vh;
 	color: #eef;
 }
+@media (min-width: 500px) {
+	#themes article {
+		width: 46.5vw;
+		background-color: #136;
+		border-radius: 2vh;
+		color: #eef;
+	}
+}
 #themes article a {
-	padding: 0.5vh;
+	padding: 0.5vw;
 	background-color: #248;
-	border-radius: 0.75vh;
+	border-radius: 0.5vh;
+	border-style: outset;
+	border-width: 0.625vh;
+	border-color: #137;
 	text-decoration: underline;
 	color: #cdf;
 }
@@ -100,6 +134,7 @@ header ol li {
 }
 #halloweenTwentyTwenty a {
 	background-color: #290059 !important;
+	border-color: #180048 !important; /* #F6B75D ? */
 	color: #eef !important;
 }
 /* Kai's 3rd Birthday */
@@ -109,6 +144,7 @@ header ol li {
 }
 #kaisThirdBirthdayTheme a {
 	background-color: #ec0 !important;
+	border-color: #ca0 !important; /* #5A6CCD ? */
 	color: #111 !important;
 }
 /* Default Template *//*
