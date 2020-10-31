@@ -29,6 +29,16 @@ header {
 	font-size: 1rem;
 	text-align: center;
 }
+header ul {
+	list-style: none outside;
+	text-align: left;
+}
+header ul li::before {
+	display: inline-block;
+	margin: 0 1vw;
+	content: "\2022";
+	color: #a16208;
+}
 @media (min-width: 400px) {
 	header {
 		margin: 1vh 2.5vw;
